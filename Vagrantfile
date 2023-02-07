@@ -61,9 +61,16 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
   sudo apt-get update
-  sudo apt-get install -y php
-  sudo apt-get install -y php-mysql
   sudo apt-get install -y nginx
   sudo apt-get install -y mysql-server
+  sudo add-apt-repository ppa:jczaplicki/xenial-php74-temp
+  sudo apt-get update
+  sudo apt-get install -y php7.4
+  sudo apt-get install -y php7.4-xml
+  sudo apt-get install -y php7.4-fpm
+  sudo apt-get install -y php7.4-curl
+  sudo apt-get install -y php7.4-mysql
+  sudo apt remove -y apache2
+  sudo apt purge -y apache2
   SHELL
 end
