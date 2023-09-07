@@ -24,5 +24,4 @@ class FootballController extends \yii\web\Controller
         $players = FootballPlayer::find()->joinWith('command')->all();
         return $this->render('players', ['players' => $players]);
     }
-
 }

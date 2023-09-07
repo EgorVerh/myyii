@@ -48,16 +48,22 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'form'=>'takedatam/default/savedataview',
+                'read'=>'takedatam',
             ],
         ],
-        */
+    ],
+    'modules' => [
+        'takedatam' => [
+            'class' => 'app\modules\takedatam',
+        ],
     ],
     'params' => $params,
+     
 ];
 
 if (YII_ENV_DEV) {
