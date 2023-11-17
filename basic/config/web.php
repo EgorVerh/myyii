@@ -54,6 +54,11 @@ $config = [
             'rules' => [
                 'form'=>'takedatam/default/savedataview',
                 'read'=>'takedatam',
+                'form1'=>'takedatam/default/index',
+                'form2'=>'takedatam/default/form2',
+                'form3'=>'takedatam/default/form3',
+                'form4'=>'takedatam/default/form4'
+
             ],
         ],
     ],
