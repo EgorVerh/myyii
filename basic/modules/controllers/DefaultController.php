@@ -52,10 +52,6 @@ class DefaultController extends Controller
             public function actionForm2()
             { 
         
-                // echo "<pre>";
-                // var_dump($_GET['Massrows']);
-                // die();
-        
                 if(isset($_GET['Massrows'])){
                     foreach($_GET['Massrows'] as $row){
         //Сохранение всех textarea  в строке
