@@ -10,19 +10,7 @@ use yii\helpers\Html;
 <div class="col-3" style="font-size:12px;"><b>Адрес электронной почты учредителя</b></div>
 <div class="col-2" style="font-size:12px;"><b>Адрес сайта учредителя в сети &laquo;Интернет&raquo;</b></div>
 </div>
-<!-- <div class="row" id="row'+i+'" style="margin-top:20px;border-top:2px solid grey; padding-top: 20px;">
-<div class="form col-3">
-<textarea class="form-control" id="Textarea1" name="'+i+'Textarea1"></textarea>
-</div>
-<div class="form col-2">
-<textarea class="form-control" id="Textarea2" name="'+i+'Textarea2"></textarea>
-</div>
-<div class="form col-2">
-<textarea class="form-control" id="Textarea3" name="'+i+'Textarea3"></textarea>
-</div>
-<div style="font-size:35pt; border: 1px solid #F0F0F0;" class="col-3" id="address"><button type="button" id="add_address" class="btn btn-success">+ Добавить</button></div>
-<div style="font-size:35pt; border: 1px solid #F0F0F0;" class="col-2" id="sayt"><button type="button" id="add_sayt" class="btn btn-success">+ Добавить</button></div>
-</div> -->
+
 <form>
 <div style="font-size:35pt" id="div_add_row"><button type="button" id="add_row" class="btn btn-success">+ Добавить</button></div>
 <div class="form-group" style="margin-top:10px">
