@@ -3,11 +3,6 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 ?>
 
-<!-- <form name="form" method="post"  enctype="multipart/form-data">
-<input type="file" name="upload_file" title="Выберите файл"/></br>
-<input type="submit" value = "Загрузить файл" name="button" /></br>
-</form>  -->
-
 <h2 style="text-align: center;">Редактирование страницы</h2>
 <p>ФГБОУ ВО &laquo;ВГСПУ&raquo;</p>
 <form method="post" enctype="multipart/form-data">
