@@ -1,131 +1,59 @@
 <?php
 /** @var yii\web\View $this */
 use yii\helpers\Html;
+use frontend\modules\takedatam\assets\AppAsset;
+AppAsset::register($this);
 //стиль дисплей блок
+$this->registerJsFile('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
+$this->registerJsFile('@modulestakedatamscript/form2.js');
+$this->registerCssFile('@modulestakedatamcss/form2.css');
 ?>
 <h4><b>Сведения о каждом учредителе образовательной организации</h4>
 <div class="row" id="no">
-<div class="col-md-3" style="font-size:12px;margin-top:10px"><b>Наименование учредителя образовательной организации</b></div>
-<div class="col-md-2" style="font-size:12px;margin-top:10px"><b>Юридический адрес учредителя</b></div>
-<div class="col-md-2" style="font-size:12px;margin-top:10px"><b>Контактный телефон учредителя</b></div>
-<div class="col-md-3" style="font-size:12px;margin-top:10px"><b>Адрес электронной почты учредителя</b></div>
-<div class="col-md-2" style="font-size:12px;margin-top:10px"><b>Адрес сайта учредителя в сети &laquo;Интернет&raquo;</b></div>
+<div class="col-sm-3 hightrow"><b >Наименование учредителя образовательной организации</b></div>
+<div class="col-sm-2 hightrow"><b>Юридический адрес учредителя</b></div>
+<div class="col-sm-2 hightrow"><b>Контактный телефон учредителя</b></div>
+<div class="col-sm-3 hightrow"><b>Адрес электронной почты учредителя</b></div>
+<div class="col-sm-2 hightrow"><b>Адрес сайта учредителя в сети &laquo;Интернет&raquo;</b></div>
 </div>  
 <form>
-<div style="font-size:35pt" id="div_add_row"><button type="button" id="add_row" class="btn btn-success">+ Добавить</button></div>
-<div class="form-group" style="margin-top:10px">
+    <!-- Проверка на введенные данные, если есть то будут показаны -->
+    <!-- Доделать кнопки -->
+    <?php
+     $get=Yii::$app->request->get('Massrows');
+     if(isset($get))
+    {
+        $i=1;
+        $e=1;
+        $s=1;
+        foreach($get as $row){
+        echo'<div class="row scriprow" id="row'.$i.'"><div class="col-sm-1"><ul><li><button type="button" id="btn_up" class="btn scripbtn">^</button></li><li><button type="button" id="btn_down" class="btn scripbtn">v</button></li><li><button type="button" id="remove_row" class="btn btn-danger">X</button></li></ul></div><div class="col-sm-2"><textarea class="form-control" id="Textarea1" name="Massrows['.$i.'][0][]">'.$row[0][0].'</textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea2" name="Massrows['.$i.'][0][]">'.$row[0][1].'</textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea3" name="Massrows['.$i.'][0][]">'.$row[0][2].'</textarea></div>';
+        
+        echo'<div class="col-sm-3 idsaytaddress" id="address">';
+        if(isset($row[1])){
+        foreach($row[1] as $row1)
+        {
+            echo '<div class="row textsaytaddres"><div class="col-sm-10"><textarea class="form-control" id="textaddres'.$e.'" name="Massrows['.$i.'][1][]">'.$row1.'</textarea></div><button type="button" id="remove_address" class="btn btn-danger col-sm-2">X</button></div>';
+            $e++;
+        }
+    }
+        echo'<button type="button" id="add_address" class="btn btn-success" name="'.$i.'">+ Добавить</button></div>';
+
+        echo'<div class="col-sm-2 idsaytaddress" id="sayt">';
+        if(isset($row[2])){
+            foreach($row[2] as $row2)
+                {
+                    echo'<div class="row textsaytaddres"><div class="col-sm-10"><textarea class="form-control" id="textsayt'.$s.'" name="Massrows['.$i.'][2][]">'.$row2.'</textarea></div><button type="button" id="remove_address" class="btn btn-danger col-sm-2">X</button></div>';
+                }
+        }
+        echo'<button type="button" id="add_sayt" class="btn btn-success" name="'.$i.'">+ Добавить</button></div></div>';
+        $i++;
+    }
+    }
+    ?>
+<div id="div_add_row"><button type="button" id="add_row" class="btn btn-success">+ Добавить</button></div>
+<div class="form-group">
 <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
 </div>
 </form>
 <!-- Подключение скриптов и сами скрипты -->
-<script "assets/e52bf38b/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    // Добавление и удаление главной строки
-    var i=0;
-    $("#add_row").click(function(){
-        i++;
-        $("#div_add_row").before('<div class="row" id="row'+i+'" style="margin-top:20px;border-top:2px solid grey; padding-top: 20px;"><div class="col-md-1"><button type="button" style="font-size:10px; background-color:blue;" id="btn_down" class="btn">^</button><button type="button" style="font-size:10px; background-color:blue;" id="btn_down" class="btn">v</button><button style="text-align:centre; font-size:10px" type="button" id="remove_row" class="btn btn-danger">X</button></div><div class="col-md-2"><textarea class="form-control" id="Textarea1" name="Massrows['+i+'][0][]"></textarea></div><div class="col-md-2"><textarea class="form-control" id="Textarea2" name="Massrows['+i+'][0][]"></textarea></div><div class="col-md-2"><textarea class="form-control" id="Textarea3" name="Massrows['+i+'][0][]"></textarea></div><div style="font-size:35pt; border: 1px solid #F0F0F0;" class="col-md-3" id="address"><button type="button" id="add_address" class="btn btn-success" name="'+i+'">+ Добавить</button></div><div style="font-size:35pt; border: 1px solid #F0F0F0;" class="col-md-2" id="sayt"><button type="button" id="add_sayt" class="btn btn-success" name="'+i+'">+ Добавить</button></div></div>');
-        // Стиль для вставки самой первой строки
-        if($("#row"+i).prev().attr("id")=="no")
-        {
-            $("#row"+i).find("#btn_up").removeClass("btn-danger");
-            $("#row"+i).find("#btn_up").css({'background-color':'blue'}); 
-        }
-
-        // Смена стиля кнопок строки после вставки новой
-        if($("#row"+i).prev().prev().attr("id")=="no")
-        {
-            $("#row"+i).prev().find("#btn_down").addClass("btn-danger");
-           
-        }
-        else
-        {
-            $("#row"+i).prev().find("#btn_up").addClass("btn-danger");
-            $("#row"+i).prev().find("#btn_down").addClass("btn-danger");
-        }
-    });
-    $(document).on('click','#remove_row', function(){ 
-               $(this).closest('.row').remove();
-             });
-    //Конец Добавления и удаления главной строки( нужно доработать для смены стиля кнопок в зависимости от оставшихся строк)
-
-    //Добавление и удаление адреса почты
-    var e=0;
-    $(document).on('click','#add_address',function(){
-        ++e;
-        var numberrow=$(this).attr("name");
-        $(this).before('<div class="row" style="margin-bottom:5px"><div class="col-md-10"><textarea class="form-control" id="textaddres'+e+'" name="Massrows['+numberrow+'][1][]"></textarea></div><button style="width:30px; height:30px; margin-top:25px; text-align:centre; font-size:10px" type="button" id="remove_address" class="btn btn-danger col-md-2">X</button></div>');
-    })
-    $(document).on('click','#remove_address', function(){ 
-               $(this).closest('.row').remove();
-            });
-    //Конец Добавление и удаление адреса сайтата
-
-    //Добавление и удаление адреса сайтата
-    var s=0;
-    $(document).on('click','#add_sayt',function(){
-        ++s;
-        var numberrow=$(this).attr("name");
-        $(this).before('<div class="row" style="margin-bottom:5px"><div class="col-md-10"><textarea class="form-control" id="textsayt'+s+'" name="Massrows['+numberrow+'][2][]"></textarea></div><button style="width:30px; height:30px; margin-top:25px; text-align:centre; font-size:10px" type="button" id="remove_address" class="btn btn-danger col-md-2">X</button></div>');
-    })
-    $(document).on('click','#remove_sayt', function(){ 
-               $(this).closest('.row').remove();
-            });
-    //Конец Добавление и удаление адреса сайтата
-    
-    
-    //вверх  
-    $(document).on('click','#btn_up', function(){ 
-              var idrow=$(this).closest('.row').attr("id"); 
-              if($("#"+idrow).prev().attr("id")=='no'){}
-              else{
-                // Код для кнопки вверх у самого низа для активации кнопки вниз
-                if($("#"+idrow).next().attr("id")=='div_add_row')
-                        {
-                            $(this).prev().addClass("btn-danger");// вовращаю кнопке вниз стиль активной
-                            $("#"+idrow).prev().find("#btn_down").removeClass('btn-danger');// удаляю у верхней кнопки вниз класс
-                            $("#"+idrow).prev().find("#btn_down").css({'background-color':'blue'});// даю кнопке вниз у верхнего блока стиль неактивной
-                        }
-
-                    $("#"+idrow).after($('#'+idrow).prev());
-
-                    // Код для кнопки вверх пришедшей с самого верха
-                    if($("#"+idrow).prev().attr("id")=='no')
-                    {
-                        $(this).removeClass("btn-danger");// удаляю у текущей кнопке вверх класс
-                        $(this).css({'background-color':'blue'});// даю текущей кнопке вверх стиль неактивной
-                        $("#"+idrow).next().find("#btn_up").addClass('btn-danger');// даю кнопке вверх у нижнего блока стиль активной
-                    }
-                }
-             });
-    //конец ввверх
-
-    //вниз
-    $(document).on('click','#btn_down', function(){
-              var idrow=$(this).closest('.row').attr("id");
-              if($("#"+idrow).next().attr("id")=='div_add_row'){} 
-                    else{
-                        // Код для кнопки вниз у самого верха для активации кнопки вверх
-                        if($("#"+idrow).prev().attr("id")=='no')
-                        {
-                            $(this).next().addClass("btn-danger");//вовращаю кнопке вверх стиль активной
-                            $("#"+idrow).next().find("#btn_up").removeClass('btn-danger');// удаляю у нижнего блока для кнопки вверх класс
-                            $("#"+idrow).next().find("#btn_up").css({'background-color':'blue'});// даю кнопке вверх следующего блока стиль неактивной
-                        }
-                        
-                        $("#"+idrow).before($('#'+idrow).next());
-
-                        // Код для деактивации кнопки вниз пришедшей в конец списка
-                        if($("#"+idrow).next().attr("id")=='div_add_row')
-                        {
-                            $(this).removeClass("btn-danger");// удаляю у текущей кнопке вниз класс
-                            $(this).css({'background-color':'blue'});// даю текущей кнопке вниз стиль неактивной
-                            $("#"+idrow).prev().find("#btn_down").addClass('btn-danger');// даю кнопке вниз у верхнего блока стиль активной
-                        }
-                    }
-             });
-    //конец вниз
-});
-</script>

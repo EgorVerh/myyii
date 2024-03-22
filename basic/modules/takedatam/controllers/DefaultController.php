@@ -4,9 +4,10 @@ namespace frontend\modules\takedatam\controllers;
 
 use Yii;
 use yii\web\Controller;
-use frontend\models\Dataforms;
-use frontend\models\Form2addres;
-use frontend\models\Form2email; 
+use frontend\modules\takedatam\models\Dataforms;
+use frontend\modules\takedatam\models\Form2addres;
+use frontend\modules\takedatam\models\Form2email; 
+use frontend\modules\takedatam\models\Savefiles;
 use yii\web\UploadedFile;
 use frontend\models\StorageUploadForm;
 use common\models\storage\Upload;
@@ -34,34 +35,35 @@ class DefaultController extends Controller
      * @return string
      */
 
-    public function actionIndex()
-    {
-        if(isset($_GET["Textarea1"])&& $_GET["Textarea1"]!=''&& isset($_GET["Textarea2"])&& $_GET["Textarea2"]!=''&& isset($_GET["Textarea3"])&& $_GET["Textarea3"]!='')
-        {
+    public function actionIndex() 
+    {   
+        $request = Yii::$app->request;  
             $saveintable = new Dataforms();
             $saveintable->namefildsforms ='О полном наименовании образовательной организации';
-            $dataht=$_GET['Textarea1'];
+            $dataht=$request->get('Textarea1');
             $saveintable->datafilds =$dataht;
             $saveintable->save();
         
-            $saveintable = new Dataforms();
+            $saveintable =new Dataforms();
             $saveintable->namefildsforms ='Сокращенное (при наличии) наименование образовательной организации';
-            $dataht=$_GET['Textarea2'];
+            $dataht=$request->get('Textarea2');
             $saveintable->datafilds =$dataht;
             $saveintable->save();
         
             $saveintable = new Dataforms();
             $saveintable->namefildsforms ='Дата создания образовательной организации';
-            $dataht=$_GET['Textarea3'];
+            $dataht=$request->get('Textarea3');
             $saveintable->datafilds =$dataht;
             $saveintable->save();
-        }
+            
+            
         return $this->render('index');
     }
     public function actionForm2()
     {
-        if(isset($_GET['Massrows'])){
-            foreach($_GET['Massrows'] as $row){
+        $request = Yii::$app->request;
+        if($request->get('Massrows')){
+            foreach($request->get('Massrows') as $row){
 //Сохранение всех textarea  в строке
 
                 $saveintable = new Dataforms();
@@ -69,7 +71,7 @@ class DefaultController extends Controller
                 $saveintable->datafilds =$row[0][0];
                 $saveintable->save();
                 $idfordop=Yii::$app->db->getLastInsertID();
-                var_dump($idfordop);
+
                 $saveintable = new Dataforms();
                 $saveintable->namefildsforms ='Юридический адрес учредителя';
                 $saveintable->datafilds =$row[0][1];
@@ -113,16 +115,40 @@ class DefaultController extends Controller
 
     public function actionForm3()
     {
-        if ($_FILES){
-                $uploaddir = '/home/vagrant/test/';
-            foreach ($_FILES['upload_file']['name'] as $file => $name) {
+
+        if ($_FILES && $_FILES['upload_file']['name'][0]!=''){
+                $uploaddir = '/home/vagrant/test/portal_local_repo/app/frontend/web/downloads/';
+                $savefile=$_FILES;
+                $i=0;
+            foreach ($_FILES['upload_file']['name'] as $file => $name) 
+            {
                 $uploadfile = $uploaddir . basename($name);
                 $tmpname = $_FILES['upload_file']['tmp_name'][$file];
-                if (move_uploaded_file($tmpname, $uploadfile)) {
-                    echo "Файл корректен и был успешно загружен.\n";
+                if (copy($tmpname, $uploadfile)) {  
+                    $saveintable=new Savefiles();
+                    $saveintable->Titel=$_POST['Textarea'][$i];
+                    $saveintable->NameFile=$name;
+                    $saveintable->Link= 'downloads/'.basename($name);
+                    $saveintable->save();
+                    $i++;
+                    // echo "Файл корректен и был успешно загружен.\n";
+                    // echo $uploaddir;
+                }
+                $uploadfile = $uploaddir . basename("Устав.pdf");
+                $tmpname = $_FILES['upload_file']['tmp_name'][$file];
+                if(file_exists("/home/vagrant/test/portal_local_repo/app/frontend/web/downloads/Устав.pdf"))
+                {
+                unlink("/home/vagrant/test/portal_local_repo/app/frontend/web/downloads/Устав.pdf");
+                }
+                if (copy($tmpname, $uploadfile)) {
+                    // echo "Файл корректен и был успешно загружен.\n";
+                    // echo $uploaddir;
                 }
             }
+            return $this->render('form3');
         }
+        // var_dump(Yii::$app->request->get());
+        // die();
         return $this->render('form3');
     }
     public function actionForm4()
