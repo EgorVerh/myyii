@@ -1,9 +1,18 @@
 $(document).ready(function(){
     // Добавление и удаление главной строки
-    var i=0;
     $("#add_row").click(function(){
-        i++;
-        $("#div_add_row").before('<div class="row scriprow" id="row'+i+'"><div class="col-sm-1"><ul><li><button type="button" id="btn_up" class="btn scripbtn">^</button></li><li><button type="button" id="btn_down" class="btn scripbtn">v</button></li><li><button type="button" id="remove_row" class="btn btn-danger">X</button></li></ul></div><div class="col-sm-2"><textarea class="form-control" id="Textarea1" name="Massrows['+i+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea2" name="Massrows['+i+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea3" name="Massrows['+i+'][0][]"></textarea></div><div class="col-sm-3 idsaytaddress" id="address"><button type="button" id="add_address" class="btn btn-success" name="'+i+'">+ Добавить</button></div><div class="col-sm-2 idsaytaddress" id="sayt"><button type="button" id="add_sayt" class="btn btn-success" name="'+i+'">+ Добавить</button></div></div>');
+        var i=0;
+        var k;
+        if (typeof $('#div_add_row').prev().attr("value") !== 'undefined')
+        {
+            k=Number($('#div_add_row').prev().attr("value"))+1;
+            $("#div_add_row").before('<div class="row scriprow" id="row'+k+'" value='+k+'><div class="col-sm-1"><ul><li><button type="button" id="btn_up" class="btn scripbtn">^</button></li><li><button type="button" id="btn_down" class="btn scripbtn">v</button></li><li><button type="button" id="remove_row" class="btn btn-danger">X</button></li></ul></div><div class="col-sm-2"><textarea class="form-control" id="Textarea1" name="Massrows['+k+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea2" name="Massrows['+k+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea3" name="Massrows['+k+'][0][]"></textarea></div><div class="col-sm-3 idsaytaddress" id="address"><button type="button" id="add_address" class="btn btn-success" name="'+k+'">+ Добавить</button></div><div class="col-sm-2 idsaytaddress" id="sayt"><button type="button" id="add_sayt" class="btn btn-success" name="'+k+'">+ Добавить</button></div></div>');
+        }
+        else
+        {
+            $("#div_add_row").before('<div class="row scriprow" id="row'+i+'" value='+i+'><div class="col-sm-1"><ul><li><button type="button" id="btn_up" class="btn scripbtn">^</button></li><li><button type="button" id="btn_down" class="btn scripbtn">v</button></li><li><button type="button" id="remove_row" class="btn btn-danger">X</button></li></ul></div><div class="col-sm-2"><textarea class="form-control" id="Textarea1" name="Massrows['+i+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea2" name="Massrows['+i+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea3" name="Massrows['+i+'][0][]"></textarea></div><div class="col-sm-3 idsaytaddress" id="address"><button type="button" id="add_address" class="btn btn-success" name="'+i+'">+ Добавить</button></div><div class="col-sm-2 idsaytaddress" id="sayt"><button type="button" id="add_sayt" class="btn btn-success" name="'+i+'">+ Добавить</button></div></div>');
+        }
+        
         // Стиль для вставки самой первой строки
         if($("#row"+i).prev().attr("id")=="no")
         {
@@ -29,11 +38,19 @@ $(document).ready(function(){
     //Конец Добавления и удаления главной строки( нужно доработать для смены стиля кнопок в зависимости от оставшихся строк)
 
     //Добавление и удаление адреса почты
-    var e=0;
     $(document).on('click','#add_address',function(){
-        ++e;
+        var i=0;
+        var k;
         var numberrow=$(this).attr("name");
-        $(this).before('<div class="row textsaytaddres"><div class="col-sm-10"><textarea class="form-control" id="textaddres'+e+'" name="Massrows['+numberrow+'][1][]"></textarea></div><button type="button" id="remove_address" class="btn btn-danger col-sm-2">X</button></div>');
+        if (typeof $(this).prev().attr("value") !== 'undefined')
+        {
+            k=Number($(this).prev().attr("value"))+1;
+            $(this).before('<div class="row textsaytaddres"  value='+k+'><div class="col-sm-10"><textarea class="form-control" id="textaddres'+k+'"name="Massrows['+numberrow+'][1][]"></textarea></div><button type="button" id="remove_address" class="btn btn-danger col-sm-2">X</button></div>');
+        }
+        else
+        {
+            $(this).before('<div class="row textsaytaddres" value='+i+'><div class="col-sm-10"><textarea class="form-control" id="textaddres'+i+'"  name="Massrows['+numberrow+'][1][]"></textarea></div><button type="button" id="remove_address" class="btn btn-danger col-sm-2">X</button></div>');
+        }
     })
     $(document).on('click','#remove_address', function(){ 
                $(this).closest('.row').remove();
@@ -41,11 +58,19 @@ $(document).ready(function(){
     //Конец Добавление и удаление адреса сайтата
 
     //Добавление и удаление адреса сайтата
-    var s=0;
     $(document).on('click','#add_sayt',function(){
-        ++s;
+        var i=0;
+        var k;
         var numberrow=$(this).attr("name");
-        $(this).before('<div class="row textsaytaddres"><div class="col-sm-10"><textarea class="form-control" id="textsayt'+s+'" name="Massrows['+numberrow+'][2][]"></textarea></div><button type="button" id="remove_address" class="btn btn-danger col-sm-2">X</button></div>');
+        if (typeof $(this).prev().attr("value") !== 'undefined')
+        {
+            k=Number($(this).prev().attr("value"))+1;
+            $(this).before('<div class="row textsaytaddres" value='+k+'><div class="col-sm-10"><textarea class="form-control" id="textsayt'+k+'" name="Massrows['+numberrow+'][2][]"></textarea></div><button type="button" id="remove_address" class="btn btn-danger col-sm-2">X</button></div>');
+        }
+        else
+        {
+            $(this).before('<div class="row textsaytaddres" value='+i+'><div class="col-sm-10"><textarea class="form-control" id="textsayt'+i+'" name="Massrows['+numberrow+'][2][]"></textarea></div><button type="button" id="remove_address" class="btn btn-danger col-sm-2">X</button></div>');
+        }   
     })
     $(document).on('click','#remove_sayt', function(){ 
                $(this).closest('.row').remove();
