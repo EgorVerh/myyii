@@ -38,7 +38,7 @@ $this->registerCssFile('@modulestakedatamcss/index.css');
 </div>
 <!-- Конец Третья форма ввода -->
 <div class="form-group">
-<?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
+<?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
 </div>
 </form>
 </div>

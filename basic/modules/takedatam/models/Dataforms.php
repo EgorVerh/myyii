@@ -10,7 +10,8 @@ use Yii;
  * @property int $iddataforms
  * @property string $namefildsforms
  * @property string|null $datafilds
- *
+ * @property string|null $variable
+ * 
  * @property Form2addres[] $form2addres
  * @property Form2email[] $form2emails
  */
@@ -31,6 +32,7 @@ class Dataforms extends \yii\db\ActiveRecord
     {
         return [
             [['namefildsforms'], 'required'],
+            [['variable'], 'string'],
             [['namefildsforms', 'datafilds'], 'string', 'max' => 255],
         ];
     }
@@ -44,6 +46,7 @@ class Dataforms extends \yii\db\ActiveRecord
             'iddataforms' => 'Iddataforms',
             'namefildsforms' => 'Namefildsforms',
             'datafilds' => 'Datafilds',
+            'variable' => 'Variable',
         ];
     }
 

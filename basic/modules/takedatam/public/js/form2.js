@@ -1,36 +1,35 @@
 $(document).ready(function(){
     // Добавление и удаление главной строки
     $("#add_row").click(function(){
-        var i=0;
         var k;
         if (typeof $('#div_add_row').prev().attr("value") !== 'undefined')
         {
             k=Number($('#div_add_row').prev().attr("value"))+1;
-            $("#div_add_row").before('<div class="row scriprow" id="row'+k+'" value='+k+'><div class="col-sm-1"><ul><li><button type="button" id="btn_up" class="btn scripbtn">^</button></li><li><button type="button" id="btn_down" class="btn scripbtn">v</button></li><li><button type="button" id="remove_row" class="btn btn-danger">X</button></li></ul></div><div class="col-sm-2"><textarea class="form-control" id="Textarea1" name="Massrows['+k+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea2" name="Massrows['+k+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea3" name="Massrows['+k+'][0][]"></textarea></div><div class="col-sm-3 idsaytaddress" id="address"><button type="button" id="add_address" class="btn btn-success" name="'+k+'">+ Добавить</button></div><div class="col-sm-2 idsaytaddress" id="sayt"><button type="button" id="add_sayt" class="btn btn-success" name="'+k+'">+ Добавить</button></div></div>');
+            $("#div_add_row").before('<div class="row scriprow" id="0" value='+k+'><div class="col-sm-1"><ul><li><button type="button" id="btn_up" class="btn scripbtn">^</button></li><li><button type="button" id="btn_down" class="btn scripbtn">v</button></li><li><button type="button" id="remove_row" class="btn btn-danger">X</button></li></ul></div><input type="hidden" name="id[]" value="0"><div class="col-sm-2"><textarea class="form-control" id="Textarea1" name="Massrows['+k+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea2" name="Massrows['+k+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea3" name="Massrows['+k+'][0][]"></textarea></div><div class="col-sm-3 idsaytaddress" id="address"><button type="button" id="add_address" class="btn btn-success" name="'+k+'">+ Добавить</button></div><div class="col-sm-2 idsaytaddress" id="sayt"><button type="button" id="add_sayt" class="btn btn-success" name="'+k+'">+ Добавить</button></div></div>');
         }
         else
         {
-            $("#div_add_row").before('<div class="row scriprow" id="row'+i+'" value='+i+'><div class="col-sm-1"><ul><li><button type="button" id="btn_up" class="btn scripbtn">^</button></li><li><button type="button" id="btn_down" class="btn scripbtn">v</button></li><li><button type="button" id="remove_row" class="btn btn-danger">X</button></li></ul></div><div class="col-sm-2"><textarea class="form-control" id="Textarea1" name="Massrows['+i+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea2" name="Massrows['+i+'][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea3" name="Massrows['+i+'][0][]"></textarea></div><div class="col-sm-3 idsaytaddress" id="address"><button type="button" id="add_address" class="btn btn-success" name="'+i+'">+ Добавить</button></div><div class="col-sm-2 idsaytaddress" id="sayt"><button type="button" id="add_sayt" class="btn btn-success" name="'+i+'">+ Добавить</button></div></div>');
+            $("#div_add_row").before('<div class="row scriprow" id="0" value="0"><div class="col-sm-1"><ul><li><button type="button" id="btn_up" class="btn scripbtn">^</button></li><li><button type="button" id="btn_down" class="btn scripbtn">v</button></li><li><button type="button" id="remove_row" class="btn btn-danger">X</button></li></ul></div><input type="hidden" name="id[]" value="0"><div class="col-sm-2"><textarea class="form-control" id="Textarea1" name="Massrows[0][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea2" name="Massrows[0][0][]"></textarea></div><div class="col-sm-2"><textarea class="form-control" id="Textarea3" name="Massrows[0][0][]"></textarea></div><div class="col-sm-3 idsaytaddress" id="address"><button type="button" id="add_address" class="btn btn-success" name="0">+ Добавить</button></div><div class="col-sm-2 idsaytaddress" id="sayt"><button type="button" id="add_sayt" class="btn btn-success" name="0">+ Добавить</button></div></div>');
         }
         
         // Стиль для вставки самой первой строки
-        if($("#row"+i).prev().attr("id")=="no")
-        {
-            $("#row"+i).find("#btn_up").removeClass("btn-danger");
-            $("#row"+i).find("#btn_up").css({'background-color':'blue'}); 
-        }
+        // if($("#row"+i).prev().attr("id")=="no")
+        // {
+        //     $("#row"+i).find("#btn_up").removeClass("btn-danger");
+        //     $("#row"+i).find("#btn_up").css({'background-color':'blue'}); 
+        // }
 
-        // Смена стиля кнопок строки после вставки новой
-        if($("#row"+i).prev().prev().attr("id")=="no")
-        {
-            $("#row"+i).prev().find("#btn_down").addClass("btn-danger");
+        // // Смена стиля кнопок строки после вставки новой
+        // if($("#row"+i).prev().prev().attr("id")=="no")
+        // {
+        //     $("#row"+i).prev().find("#btn_down").addClass("btn-danger");
            
-        }
-        else
-        {
-            $("#row"+i).prev().find("#btn_up").addClass("btn-danger");
-            $("#row"+i).prev().find("#btn_down").addClass("btn-danger");
-        }
+        // }
+        // else
+        // {
+        //     $("#row"+i).prev().find("#btn_up").addClass("btn-danger");
+        //     $("#row"+i).prev().find("#btn_down").addClass("btn-danger");
+        // }
     });
     $(document).on('click','#remove_row', function(){ 
                $(this).closest('.row').remove();
