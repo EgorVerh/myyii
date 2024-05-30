@@ -7,13 +7,13 @@ use yii\widgets\ActiveForm;
 AppAsset::register($this);
 $this->registerJsFile('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 $this->registerJsFile('@modulestakedatamscript/form4.js');
-$this->registerCssFile('@modulestakedatamcss/form4.css');
+$this->registerCssFile('@modulestakedatamcss/styles.css');
 ?>
 <h2>Разделы сайта</h2>
 <form method="post">
     <?php if (isset($nameurl)) {
         foreach ($nameurl as $number => $name) { ?>
-            <div class="row" value="<?php echo $number ?>">
+            <div class="row row_form4" value="<?php echo $number ?>">
                 <input type="hidden" name="id[]" value="<?php echo $name['iddataforms'] ?>">
                 <div class="col-sm-1">
                 <?php echo Html::a('X', ['/deleteform4', 'post' => $name['iddataforms']], ['id' => 'delrow', 'class' => 'btn btn-danger']) ?>
