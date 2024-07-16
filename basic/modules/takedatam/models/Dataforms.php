@@ -31,9 +31,11 @@ class Dataforms extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['namefildsforms'], 'required'],
-            [['variable'], 'string'],
-            [['namefildsforms', 'datafilds'], 'string', 'max' => 255],
+            [['namefildsforms'],'required'],
+            [['variable'], 'required'],
+            [['variable'], 'number'],
+            [['datafilds'],'required'],
+            [['datafilds'],'url','message'=>'Это не ссылка'],
         ];
     }
 

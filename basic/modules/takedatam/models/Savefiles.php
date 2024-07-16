@@ -29,7 +29,10 @@ class Savefiles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Titel', 'NameFile', 'Link', 'Position'], 'string'],
+            [['Titel', 'NameFile'],'required'],
+            [['Titel', 'NameFile','Position'],'string'],
+            ['Position','match','pattern'=>'/^[a-zA-Z0-9_-]{31,32}$/'],
+            [ 'Link','match','pattern'=>'/^http:\/\/192.168.33.23:9000\/testbucket\/[a-zA-Z0-9_-]{31,32}$/'],
         ];
     }
 
