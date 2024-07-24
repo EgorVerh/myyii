@@ -32,23 +32,32 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                 value="<?php echo $table["Titel"] ?>" required><br>
                             <?php if ($table["Link"] == '') { ?>
                                 <div><label class="control-label" for="File<?php echo $count_row ?>">Документ для
-                                        загрузки</label><input type="file" id="File<?php echo $count_row ?>"
-                                        class="form-control file-loading" name="document[<?php echo $count_row ?>]" multiple=""
-                                        data-krajee-fileinput="fileinput_4efc2035" accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                        загрузки</label>
+                                    <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                            type="file" id="File<?php echo $count_row ?>" class="form-control file-loading wrong_file"
+                                            name="document[<?php echo $count_row ?>]" accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                    <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                            class="form-control file-loading" name="document[<?php echo $count_row ?>]"
+                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                 <?php } else { ?>
-                                    <div class="labeloform"><a class="colorhref" target="_blank" href="<?php echo $table["Link"] ?>">Ссылка на загруженный
+                                    <div class="labeloform"><a class="colorhref" target="_blank"
+                                            href="<?php echo $table["Link"] ?>">Ссылка на загруженный
                                             файл</a></div>
                                     <div style="margin-top:20px;"><label class="control-label"
                                             for="File<?php echo $count_row ?>">Заменить
                                             загруженный
-                                            файл</label><input type="file" id="File<?php echo $count_row ?>"
-                                            class="form-control file-loading" name="document[<?php echo $count_row ?>]" multiple=""
-                                            data-krajee-fileinput="fileinput_4efc2035" accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                            файл</label>
+                                        <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                type="file" id="File<?php echo $count_row ?>" class="form-control file-loading wrong_file"
+                                                name="document[<?php echo $count_row ?>]" accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                        <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                class="form-control file-loading" name="document[<?php echo $count_row ?>]"
+                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                     <?php } ?>
                                 </div>
                             </div>
                             <div>
-                                <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                             </div>
                         </div>
                         <?php $count_row++;
@@ -72,24 +81,33 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                     value="<?php echo $table["Titel"] ?>" required><br>
                                 <?php if ($table["Link"] == '') { ?>
                                     <div><label class="control-label" for="File<?php echo $count_row ?>">Документ для
-                                            загрузки</label><input type="file" id="File<?php echo $count_row ?>"
-                                            class="form-control file-loading" name="document[<?php echo $count_row ?>]" multiple=""
-                                            data-krajee-fileinput="fileinput_4efc2035" accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                            загрузки</label>
+                                        <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                type="file" id="File<?php echo $count_row ?>" class="form-control file-loading wrong_file"
+                                                name="document[<?php echo $count_row ?>]" accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                        <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                class="form-control file-loading" name="document[<?php echo $count_row ?>]"
+                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                     <?php } else { ?>
-                                        <div class="labeloform"><a class="colorhref" target="_blank" href="<?php echo $table["Link"] ?>">Ссылка на
-                                                загруженный
+                                        <div class="labeloform"><a class="colorhref" target="_blank"
+                                                href="<?php echo $table["Link"] ?>">Ссылка на загруженный
                                                 файл</a></div>
                                         <div style="margin-top:20px;"><label class="control-label"
                                                 for="File<?php echo $count_row ?>">Заменить
                                                 загруженный
-                                                файл</label><input type="file" id="File<?php echo $count_row ?>"
-                                                class="form-control file-loading" name="document[<?php echo $count_row ?>]" multiple=""
-                                                data-krajee-fileinput="fileinput_4efc2035" accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                файл</label>
+                                            <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                    type="file" id="File<?php echo $count_row ?>"
+                                                    class="form-control file-loading wrong_file" name="document[<?php echo $count_row ?>]"
+                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                            <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                    class="form-control file-loading" name="document[<?php echo $count_row ?>]"
+                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                         <?php } ?>
                                     </div>
                                 </div>
                                 <div>
-                                    <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                    <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                 </div>
                             </div>
                             <?php $count_row++;
@@ -102,35 +120,44 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                     <?php foreach ($tabledata as $table) {
                         if ($table["NameFile"] == 13) { ?>
                             <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
-                            <input type="hidden" name="document[<?php echo $count_row ?>][]" value=<?php echo $table['Position'] ?>>
-                               <input type="hidden" name="document[<?php echo $count_row ?>][]" value=13>
+                                <input type="hidden" name="document[<?php echo $count_row ?>][]" value=<?php echo $table['Position'] ?>>
+                                <input type="hidden" name="document[<?php echo $count_row ?>][]" value=13>
                                 <div class="col-sm-11">
                                     <label for="document_purpose<?php echo $count_row ?>"> Назначение докумета</label>
                                     <input class="form-control" type="text" name="document[<?php echo $count_row ?>][]"
                                         placeholder="Устав; Локальный нормативный акт, регламентирующий режим занятий обучающихся и т.д."
                                         value="<?php echo $table["Titel"] ?>" required><br>
                                     <?php if ($table["Link"] == '') { ?>
-                                        <div><label class="control-label" for="File<?php echo $count_row ?>">Документ
-                                                для
-                                                загрузки</label><input type="file" id="File<?php echo $count_row ?>"
-                                                class="form-control file-loading" name="document[<?php echo $count_row ?>]" multiple=""
-                                                data-krajee-fileinput="fileinput_4efc2035" accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                        <div><label class="control-label" for="File<?php echo $count_row ?>">Документ для
+                                                загрузки</label>
+                                            <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                    type="file" id="File<?php echo $count_row ?>"
+                                                    class="form-control file-loading wrong_file" name="document[<?php echo $count_row ?>]"
+                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                            <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                    class="form-control file-loading" name="document[<?php echo $count_row ?>]"
+                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                         <?php } else { ?>
-                                            <div class="labeloform"><a class="colorhref" target="_blank" href="<?php echo $table["Link"] ?>">Ссылка на
-                                                    загруженный
+                                            <div class="labeloform"><a class="colorhref" target="_blank"
+                                                    href="<?php echo $table["Link"] ?>">Ссылка на загруженный
                                                     файл</a></div>
                                             <div style="margin-top:20px;"><label class="control-label"
                                                     for="File<?php echo $count_row ?>">Заменить
                                                     загруженный
-                                                    файл</label><input type="file" id="File<?php echo $count_row ?>"
-                                                    class="form-control file-loading" name="document[<?php echo $count_row ?>]"
-                                                    multiple="" data-krajee-fileinput="fileinput_4efc2035"
-                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                    файл</label>
+                                                <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                        type="file" id="File<?php echo $count_row ?>"
+                                                        class="form-control file-loading wrong_file"
+                                                        name="document[<?php echo $count_row ?>]"
+                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                        class="form-control file-loading" name="document[<?php echo $count_row ?>]"
+                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                             <?php } ?>
                                         </div>
                                     </div>
                                     <div>
-                                        <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                        <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                     </div>
                                 </div>
                                 <?php $count_row++;
@@ -138,7 +165,8 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                     }
                     ?>
                         <div class="rightbuttonposition"><button type="button" id="add_row" class="btn btn-success"
-                                value=13>+ Добавить</button></div>
+                                value=13>+
+                                Добавить</button></div>
                         <h4>Копия локального нормативного акта, регламентирующего режим занятий обучающихся</h4>
                         <?php foreach ($tabledata as $table) {
                             if ($table["NameFile"] == 14) { ?>
@@ -152,26 +180,36 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                             value="<?php echo $table["Titel"] ?>" required><br>
                                         <?php if ($table["Link"] == '') { ?>
                                             <div><label class="control-label" for="File<?php echo $count_row ?>">Документ для
-                                                    загрузки</label><input type="file" id="File<?php echo $count_row ?>"
-                                                    class="form-control file-loading" name="document[<?php echo $count_row ?>]"
-                                                    multiple="" data-krajee-fileinput="fileinput_4efc2035"
-                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                    загрузки</label>
+                                                <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                        type="file" id="File<?php echo $count_row ?>"
+                                                        class="form-control file-loading wrong_file"
+                                                        name="document[<?php echo $count_row ?>]"
+                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                        class="form-control file-loading" name="document[<?php echo $count_row ?>]"
+                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                             <?php } else { ?>
-                                                <div class="labeloform"><a class="colorhref" target="_blank" href="<?php echo $table["Link"] ?>">Ссылка на
-                                                        загруженный
+                                                <div class="labeloform"><a class="colorhref" target="_blank"
+                                                        href="<?php echo $table["Link"] ?>">Ссылка на загруженный
                                                         файл</a></div>
                                                 <div style="margin-top:20px;"><label class="control-label"
                                                         for="File<?php echo $count_row ?>">Заменить
                                                         загруженный
-                                                        файл</label><input type="file" id="File<?php echo $count_row ?>"
-                                                        class="form-control file-loading" name="document[<?php echo $count_row ?>]"
-                                                        multiple="" data-krajee-fileinput="fileinput_4efc2035"
-                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                        файл</label>
+                                                    <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                            type="file" id="File<?php echo $count_row ?>"
+                                                            class="form-control file-loading wrong_file"
+                                                            name="document[<?php echo $count_row ?>]"
+                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                    <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                            class="form-control file-loading" name="document[<?php echo $count_row ?>]"
+                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                 <?php } ?>
                                             </div>
                                         </div>
                                         <div>
-                                            <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                         </div>
                                     </div>
                                     <?php $count_row++;
@@ -195,10 +233,15 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                 value="<?php echo $table["Titel"] ?>" required><br>
                                             <?php if ($table["Link"] == '') { ?>
                                                 <div><label class="control-label" for="File<?php echo $count_row ?>">Документ для
-                                                        загрузки</label><input type="file" id="File<?php echo $count_row ?>"
-                                                        class="form-control file-loading" name="document[<?php echo $count_row ?>]"
-                                                        multiple="" data-krajee-fileinput="fileinput_4efc2035"
-                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                        загрузки</label>
+                                                    <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                            type="file" id="File<?php echo $count_row ?>"
+                                                            class="form-control file-loading wrong_file"
+                                                            name="document[<?php echo $count_row ?>]"
+                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                    <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                            class="form-control file-loading" name="document[<?php echo $count_row ?>]"
+                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                 <?php } else { ?>
                                                     <div class="labeloform"><a class="colorhref" target="_blank"
                                                             href="<?php echo $table["Link"] ?>">Ссылка на загруженный
@@ -206,15 +249,20 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                     <div style="margin-top:20px;"><label class="control-label"
                                                             for="File<?php echo $count_row ?>">Заменить
                                                             загруженный
-                                                            файл</label><input type="file" id="File<?php echo $count_row ?>"
-                                                            class="form-control file-loading" name="document[<?php echo $count_row ?>]"
-                                                            multiple="" data-krajee-fileinput="fileinput_4efc2035"
-                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                            файл</label>
+                                                        <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                type="file" id="File<?php echo $count_row ?>"
+                                                                class="form-control file-loading wrong_file"
+                                                                name="document[<?php echo $count_row ?>]"
+                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                        <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                                class="form-control file-loading" name="document[<?php echo $count_row ?>]"
+                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                     <?php } ?>
                                                 </div>
                                             </div>
                                             <div>
-                                                <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                                <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                             </div>
                                         </div>
                                         <?php $count_row++;
@@ -238,10 +286,15 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                     value="<?php echo $table["Titel"] ?>" required><br>
                                                 <?php if ($table["Link"] == '') { ?>
                                                     <div><label class="control-label" for="File<?php echo $count_row ?>">Документ для
-                                                            загрузки</label><input type="file" id="File<?php echo $count_row ?>"
-                                                            class="form-control file-loading" name="document[<?php echo $count_row ?>]"
-                                                            multiple="" data-krajee-fileinput="fileinput_4efc2035"
-                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                            загрузки</label>
+                                                        <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                type="file" id="File<?php echo $count_row ?>"
+                                                                class="form-control file-loading wrong_file"
+                                                                name="document[<?php echo $count_row ?>]"
+                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                        <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                                class="form-control file-loading" name="document[<?php echo $count_row ?>]"
+                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                     <?php } else { ?>
                                                         <div class="labeloform"><a class="colorhref" target="_blank"
                                                                 href="<?php echo $table["Link"] ?>">Ссылка на загруженный
@@ -249,16 +302,21 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                         <div style="margin-top:20px;"><label class="control-label"
                                                                 for="File<?php echo $count_row ?>">Заменить
                                                                 загруженный
-                                                                файл</label><input type="file" id="File<?php echo $count_row ?>"
-                                                                class="form-control file-loading"
-                                                                name="document[<?php echo $count_row ?>]" multiple=""
-                                                                data-krajee-fileinput="fileinput_4efc2035"
-                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                файл</label>
+                                                            <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                    type="file" id="File<?php echo $count_row ?>"
+                                                                    class="form-control file-loading wrong_file"
+                                                                    name="document[<?php echo $count_row ?>]"
+                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                            <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                                    class="form-control file-loading"
+                                                                    name="document[<?php echo $count_row ?>]"
+                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                         <?php } ?>
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                                    <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                                 </div>
                                             </div>
                                             <?php $count_row++;
@@ -287,11 +345,16 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                     <?php if ($table["Link"] == '') { ?>
                                                         <div><label class="control-label" for="File<?php echo $count_row ?>">Документ
                                                                 для
-                                                                загрузки</label><input type="file" id="File<?php echo $count_row ?>"
-                                                                class="form-control file-loading"
-                                                                name="document[<?php echo $count_row ?>]" multiple=""
-                                                                data-krajee-fileinput="fileinput_4efc2035"
-                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                загрузки</label>
+                                                            <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                    type="file" id="File<?php echo $count_row ?>"
+                                                                    class="form-control file-loading wrong_file"
+                                                                    name="document[<?php echo $count_row ?>]"
+                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                            <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                                    class="form-control file-loading"
+                                                                    name="document[<?php echo $count_row ?>]"
+                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                         <?php } else { ?>
                                                             <div class="labeloform"><a class="colorhref" target="_blank"
                                                                     href="<?php echo $table["Link"] ?>">Ссылка на загруженный
@@ -299,16 +362,21 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                             <div style="margin-top:20px;"><label class="control-label"
                                                                     for="File<?php echo $count_row ?>">Заменить
                                                                     загруженный
-                                                                    файл</label><input type="file" id="File<?php echo $count_row ?>"
-                                                                    class="form-control file-loading"
-                                                                    name="document[<?php echo $count_row ?>]" multiple=""
-                                                                    data-krajee-fileinput="fileinput_4efc2035"
-                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                    файл</label>
+                                                                <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                        type="file" id="File<?php echo $count_row ?>"
+                                                                        class="form-control file-loading wrong_file"
+                                                                        name="document[<?php echo $count_row ?>]"
+                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                                        class="form-control file-loading"
+                                                                        name="document[<?php echo $count_row ?>]"
+                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                             <?php } ?>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                                        <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                                     </div>
                                                 </div>
                                                 <?php $count_row++;
@@ -333,11 +401,16 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                         <?php if ($table["Link"] == '') { ?>
                                                             <div><label class="control-label"
                                                                     for="File<?php echo $count_row ?>">Документ для
-                                                                    загрузки</label><input type="file" id="File<?php echo $count_row ?>"
-                                                                    class="form-control file-loading"
-                                                                    name="document[<?php echo $count_row ?>]" multiple=""
-                                                                    data-krajee-fileinput="fileinput_4efc2035"
-                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                    загрузки</label>
+                                                                <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                        type="file" id="File<?php echo $count_row ?>"
+                                                                        class="form-control file-loading wrong_file"
+                                                                        name="document[<?php echo $count_row ?>]"
+                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                <?php } else { ?><input type="file" id="File<?php echo $count_row ?>"
+                                                                        class="form-control file-loading"
+                                                                        name="document[<?php echo $count_row ?>]"
+                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                             <?php } else { ?>
                                                                 <div class="labeloform"><a class="colorhref" target="_blank"
                                                                         href="<?php echo $table["Link"] ?>">Ссылка на загруженный
@@ -345,16 +418,22 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                                 <div style="margin-top:20px;"><label class="control-label"
                                                                         for="File<?php echo $count_row ?>">Заменить
                                                                         загруженный
-                                                                        файл</label><input type="file" id="File<?php echo $count_row ?>"
-                                                                        class="form-control file-loading"
-                                                                        name="document[<?php echo $count_row ?>]" multiple=""
-                                                                        data-krajee-fileinput="fileinput_4efc2035"
-                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                        файл</label>
+                                                                    <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                            type="file" id="File<?php echo $count_row ?>"
+                                                                            class="form-control file-loading wrong_file"
+                                                                            name="document[<?php echo $count_row ?>]"
+                                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                    <?php } else { ?><input type="file"
+                                                                            id="File<?php echo $count_row ?>"
+                                                                            class="form-control file-loading"
+                                                                            name="document[<?php echo $count_row ?>]"
+                                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                                         </div>
                                                     </div>
                                                     <?php $count_row++;
@@ -362,7 +441,8 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                         }
                                         ?>
                                             <div class="rightbuttonposition"><button type="button" id="add_row"
-                                                    class="btn btn-success" value=18>+ Добавить</button></div>
+                                                    class="btn btn-success" value=18>+
+                                                    Добавить</button></div>
                                             <h4>Копия правил внутреннего трудового распорядка</h4>
                                             <?php foreach ($tabledata as $table) {
                                                 if ($table["NameFile"] == 19) { ?>
@@ -379,12 +459,17 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                             <?php if ($table["Link"] == '') { ?>
                                                                 <div><label class="control-label"
                                                                         for="File<?php echo $count_row ?>">Документ для
-                                                                        загрузки</label><input type="file"
-                                                                        id="File<?php echo $count_row ?>"
-                                                                        class="form-control file-loading"
-                                                                        name="document[<?php echo $count_row ?>]" multiple=""
-                                                                        data-krajee-fileinput="fileinput_4efc2035"
-                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                        загрузки</label>
+                                                                    <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                            type="file" id="File<?php echo $count_row ?>"
+                                                                            class="form-control file-loading wrong_file"
+                                                                            name="document[<?php echo $count_row ?>]"
+                                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                    <?php } else { ?><input type="file"
+                                                                            id="File<?php echo $count_row ?>"
+                                                                            class="form-control file-loading"
+                                                                            name="document[<?php echo $count_row ?>]"
+                                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                                 <?php } else { ?>
                                                                     <div class="labeloform"><a class="colorhref" target="_blank"
                                                                             href="<?php echo $table["Link"] ?>">Ссылка на загруженный
@@ -392,17 +477,22 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                                     <div style="margin-top:20px;"><label class="control-label"
                                                                             for="File<?php echo $count_row ?>">Заменить
                                                                             загруженный
-                                                                            файл</label><input type="file"
-                                                                            id="File<?php echo $count_row ?>"
-                                                                            class="form-control file-loading"
-                                                                            name="document[<?php echo $count_row ?>]" multiple=""
-                                                                            data-krajee-fileinput="fileinput_4efc2035"
-                                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                            файл</label>
+                                                                        <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                                type="file" id="File<?php echo $count_row ?>"
+                                                                                class="form-control file-loading wrong_file"
+                                                                                name="document[<?php echo $count_row ?>]"
+                                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                        <?php } else { ?><input type="file"
+                                                                                id="File<?php echo $count_row ?>"
+                                                                                class="form-control file-loading"
+                                                                                name="document[<?php echo $count_row ?>]"
+                                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                                     <?php } ?>
                                                                 </div>
                                                             </div>
                                                             <div>
-                                                                <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                                                <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                                             </div>
                                                         </div>
                                                         <?php $count_row++;
@@ -429,12 +519,17 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                                 <?php if ($table["Link"] == '') { ?>
                                                                     <div><label class="control-label"
                                                                             for="File<?php echo $count_row ?>">Документ для
-                                                                            загрузки</label><input type="file"
-                                                                            id="File<?php echo $count_row ?>"
-                                                                            class="form-control file-loading"
-                                                                            name="document[<?php echo $count_row ?>]" multiple=""
-                                                                            data-krajee-fileinput="fileinput_4efc2035"
-                                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                            загрузки</label>
+                                                                        <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                                type="file" id="File<?php echo $count_row ?>"
+                                                                                class="form-control file-loading wrong_file"
+                                                                                name="document[<?php echo $count_row ?>]"
+                                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                        <?php } else { ?><input type="file"
+                                                                                id="File<?php echo $count_row ?>"
+                                                                                class="form-control file-loading"
+                                                                                name="document[<?php echo $count_row ?>]"
+                                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                                     <?php } else { ?>
                                                                         <div class="labeloform"><a class="colorhref" target="_blank"
                                                                                 href="<?php echo $table["Link"] ?>">Ссылка на
@@ -443,17 +538,22 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                                         <div style="margin-top:20px;"><label class="control-label"
                                                                                 for="File<?php echo $count_row ?>">Заменить
                                                                                 загруженный
-                                                                                файл</label><input type="file"
-                                                                                id="File<?php echo $count_row ?>"
-                                                                                class="form-control file-loading"
-                                                                                name="document[<?php echo $count_row ?>]" multiple=""
-                                                                                data-krajee-fileinput="fileinput_4efc2035"
-                                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                файл</label>
+                                                                            <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                                    type="file" id="File<?php echo $count_row ?>"
+                                                                                    class="form-control file-loading wrong_file"
+                                                                                    name="document[<?php echo $count_row ?>]"
+                                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                            <?php } else { ?><input type="file"
+                                                                                    id="File<?php echo $count_row ?>"
+                                                                                    class="form-control file-loading"
+                                                                                    name="document[<?php echo $count_row ?>]"
+                                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                                         <?php } ?>
                                                                     </div>
                                                                 </div>
                                                                 <div>
-                                                                    <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                                                    <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                                                 </div>
                                                             </div>
                                                             <?php $count_row++;
@@ -480,12 +580,17 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                                     <?php if ($table["Link"] == '') { ?>
                                                                         <div><label class="control-label"
                                                                                 for="File<?php echo $count_row ?>">Документ для
-                                                                                загрузки</label><input type="file"
-                                                                                id="File<?php echo $count_row ?>"
-                                                                                class="form-control file-loading"
-                                                                                name="document[<?php echo $count_row ?>]" multiple=""
-                                                                                data-krajee-fileinput="fileinput_4efc2035"
-                                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                загрузки</label>
+                                                                            <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                                    type="file" id="File<?php echo $count_row ?>"
+                                                                                    class="form-control file-loading wrong_file"
+                                                                                    name="document[<?php echo $count_row ?>]"
+                                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                            <?php } else { ?><input type="file"
+                                                                                    id="File<?php echo $count_row ?>"
+                                                                                    class="form-control file-loading"
+                                                                                    name="document[<?php echo $count_row ?>]"
+                                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls"><?php } ?>
                                                                         <?php } else { ?>
                                                                             <div class="labeloform"><a class="colorhref" target="_blank"
                                                                                     href="<?php echo $table["Link"] ?>">Ссылка на
@@ -494,18 +599,23 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                                             <div style="margin-top:20px;"><label class="control-label"
                                                                                     for="File<?php echo $count_row ?>">Заменить
                                                                                     загруженный
-                                                                                    файл</label><input type="file"
-                                                                                    id="File<?php echo $count_row ?>"
-                                                                                    class="form-control file-loading"
-                                                                                    name="document[<?php echo $count_row ?>]"
-                                                                                    multiple=""
-                                                                                    data-krajee-fileinput="fileinput_4efc2035"
-                                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                    файл</label>
+                                                                                <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                                        type="file" id="File<?php echo $count_row ?>"
+                                                                                        class="form-control file-loading wrong_file"
+                                                                                        name="document[<?php echo $count_row ?>]"
+                                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                <?php } else { ?><input type="file"
+                                                                                        id="File<?php echo $count_row ?>"
+                                                                                        class="form-control file-loading"
+                                                                                        name="document[<?php echo $count_row ?>]"
+                                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                <?php } ?>
                                                                             <?php } ?>
                                                                         </div>
                                                                     </div>
                                                                     <div>
-                                                                        <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                                                        <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                                                     </div>
                                                                 </div>
                                                                 <?php $count_row++;
@@ -533,15 +643,21 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                                         <?php if ($table["Link"] == '') { ?>
                                                                             <div><label class="control-label"
                                                                                     for="File<?php echo $count_row ?>">Документ для
-                                                                                    загрузки</label><input type="file"
-                                                                                    id="File<?php echo $count_row ?>"
-                                                                                    class="form-control file-loading"
-                                                                                    name="document[<?php echo $count_row ?>]"
-                                                                                    multiple=""
-                                                                                    data-krajee-fileinput="fileinput_4efc2035"
-                                                                                    accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                    загрузки</label>
+                                                                                <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                                        type="file" id="File<?php echo $count_row ?>"
+                                                                                        class="form-control file-loading wrong_file"
+                                                                                        name="document[<?php echo $count_row ?>]"
+                                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                <?php } else { ?><input type="file"
+                                                                                        id="File<?php echo $count_row ?>"
+                                                                                        class="form-control file-loading"
+                                                                                        name="document[<?php echo $count_row ?>]"
+                                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                <?php } ?>
                                                                             <?php } else { ?>
-                                                                                <div class="labeloform"><a class="colorhref" target="_blank"
+                                                                                <div class="labeloform"><a class="colorhref"
+                                                                                        target="_blank"
                                                                                         href="<?php echo $table["Link"] ?>">Ссылка на
                                                                                         загруженный
                                                                                         файл</a></div>
@@ -549,18 +665,23 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                                                         class="control-label"
                                                                                         for="File<?php echo $count_row ?>">Заменить
                                                                                         загруженный
-                                                                                        файл</label><input type="file"
-                                                                                        id="File<?php echo $count_row ?>"
-                                                                                        class="form-control file-loading"
-                                                                                        name="document[<?php echo $count_row ?>]"
-                                                                                        multiple=""
-                                                                                        data-krajee-fileinput="fileinput_4efc2035"
-                                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                        файл</label>
+                                                                                    <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                                            type="file" id="File<?php echo $count_row ?>"
+                                                                                            class="form-control file-loading wrong_file"
+                                                                                            name="document[<?php echo $count_row ?>]"
+                                                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                    <?php } else { ?><input type="file"
+                                                                                            id="File<?php echo $count_row ?>"
+                                                                                            class="form-control file-loading"
+                                                                                            name="document[<?php echo $count_row ?>]"
+                                                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                    <?php } ?>
                                                                                 <?php } ?>
                                                                             </div>
                                                                         </div>
                                                                         <div>
-                                                                            <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                                                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                                                         </div>
                                                                     </div>
                                                                     <?php $count_row++;
@@ -570,7 +691,6 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                             <div class="rightbuttonposition"><button type="button"
                                                                     id="add_row" class="btn btn-success" value=22>+
                                                                     Добавить</button></div>
-
                                                             <h4>Отчёты об исполнении предписаний органов, осуществляющих
                                                                 государственный контроль (надзор) в сфере
                                                                 образования</h4>
@@ -592,34 +712,46 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                                             <?php if ($table["Link"] == '') { ?>
                                                                                 <div><label class="control-label"
                                                                                         for="File<?php echo $count_row ?>">Документ для
-                                                                                        загрузки</label><input type="file"
-                                                                                        id="File<?php echo $count_row ?>"
-                                                                                        class="form-control file-loading"
-                                                                                        name="document[<?php echo $count_row ?>]"
-                                                                                        multiple=""
-                                                                                        data-krajee-fileinput="fileinput_4efc2035"
-                                                                                        accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
-                                                                                <?php } else { ?>
-                                                                                    <div class="labeloform"><a class="colorhref" target="_blank"
-                                                                                            href="<?php echo $table["Link"] ?>">Ссылка
-                                                                                            на загруженный
-                                                                                            файл</a></div>
-                                                                                    <div style="margin-top:20px;">
-                                                                                        <label class="control-label"
-                                                                                            for="File<?php echo $count_row ?>">Заменить
-                                                                                            загруженный
-                                                                                            файл</label><input type="file"
+                                                                                        загрузки</label>
+                                                                                    <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                                            type="file" id="File<?php echo $count_row ?>"
+                                                                                            class="form-control file-loading wrong_file"
+                                                                                            name="document[<?php echo $count_row ?>]"
+                                                                                            accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                    <?php } else { ?><input type="file"
                                                                                             id="File<?php echo $count_row ?>"
                                                                                             class="form-control file-loading"
                                                                                             name="document[<?php echo $count_row ?>]"
-                                                                                            multiple=""
-                                                                                            data-krajee-fileinput="fileinput_4efc2035"
                                                                                             accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                    <?php } ?>
+                                                                                <?php } else { ?>
+                                                                                    <div class="labeloform"><a class="colorhref"
+                                                                                            target="_blank"
+                                                                                            href="<?php echo $table["Link"] ?>">Ссылка
+                                                                                            на загруженный
+                                                                                            файл</a></div>
+                                                                                    <div style="margin-top:20px;"><label
+                                                                                            class="control-label"
+                                                                                            for="File<?php echo $count_row ?>">Заменить
+                                                                                            загруженный
+                                                                                            файл</label>
+                                                                                        <?php if (isset($position_wrong) && in_array($table["Position"], $position_wrong)) { ?><input
+                                                                                                type="file"
+                                                                                                id="File<?php echo $count_row ?>"
+                                                                                                class="form-control file-loading wrong_file"
+                                                                                                name="document[<?php echo $count_row ?>]"
+                                                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                        <?php } else { ?><input type="file"
+                                                                                                id="File<?php echo $count_row ?>"
+                                                                                                class="form-control file-loading"
+                                                                                                name="document[<?php echo $count_row ?>]"
+                                                                                                accept=".jpeg,.jpg,.png,.doc,.pdf,.csv,.xls">
+                                                                                        <?php } ?>
                                                                                     <?php } ?>
                                                                                 </div>
                                                                             </div>
                                                                             <div>
-                                                                                <?php echo Html::a('X', ['/delete_document', 'post' => $table['Position']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                                                                                <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_document'>X</button>
                                                                             </div>
                                                                         </div>
                                                                         <?php $count_row++;

@@ -37,7 +37,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                                 pattern="https://.*" required value="<?php echo $name['datafilds'] ?>">
                         </div>
                         <div>
-                            <?php echo Html::a('X', ['/delete_grants', 'post' => $name['iddataforms']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                        <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_grants'>X</button>
                         </div>
                     </div>
                     <?php $count_row++;
@@ -60,7 +60,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                                 pattern="https://.*" required value="<?php echo $name['datafilds'] ?>">
                         </div>
                         <div>
-                            <?php echo Html::a('X', ['/delete_grants', 'post' => $name['iddataforms']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_grants'>X</button>
                         </div>
                     </div>
                     <?php $count_row++;
@@ -83,7 +83,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                                 pattern="https://.*" required value="<?php echo $name['datafilds'] ?>">
                         </div>
                         <div>
-                            <?php echo Html::a('X', ['/delete_grants', 'post' => $name['iddataforms']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_grants'>X</button>
                         </div>
                     </div>
                     <?php $count_row++;
@@ -107,7 +107,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                                 pattern="https://.*" required value="<?php echo $name['datafilds'] ?>">
                         </div>
                         <div>
-                            <?php echo Html::a('X', ['/delete_grants', 'post' => $name['iddataforms']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_grants'>X</button>
                         </div>
                     </div>
                     <?php $count_row++;
@@ -130,7 +130,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                                 pattern="https://.*" required value="<?php echo $name['datafilds'] ?>">
                         </div>
                         <div>
-                            <?php echo Html::a('X', ['/delete_grants', 'post' => $name['iddataforms']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_grants'>X</button>
                         </div>
                     </div>
                     <?php $count_row++;
@@ -153,7 +153,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                                 pattern="https://.*" required value="<?php echo $name['datafilds'] ?>">
                         </div>
                         <div>
-                            <?php echo Html::a('X', ['/delete_grants', 'post' => $name['iddataforms']], ['id' => 'delrow', 'class' => 'btn btn-danger delbutton', 'tabindex' => '-1']) ?>
+                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_grants'>X</button>
                         </div>
                     </div>
                     <?php $count_row++;
