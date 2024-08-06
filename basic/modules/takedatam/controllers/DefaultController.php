@@ -104,19 +104,19 @@ class DefaultController extends Controller
         $saveintable = new Dataforms();
         $saveintable->namefieldsforms = 'О полном наименовании образовательной организации';
         $dataht = $request->get('Textarea1');
-        $saveintable->datafilds = $dataht;
+        $saveintable->datafields = $dataht;
         $saveintable->save();
 
         $saveintable = new Dataforms();
         $saveintable->namefieldsforms = 'Сокращенное (при наличии) наименование образовательной организации';
         $dataht = $request->get('Textarea2');
-        $saveintable->datafilds = $dataht;
+        $saveintable->datafields = $dataht;
         $saveintable->save();
 
         $saveintable = new Dataforms();
         $saveintable->namefieldsforms = 'Дата создания образовательной организации';
         $dataht = $request->get('Textarea3');
-        $saveintable->datafilds = $dataht;
+        $saveintable->datafields = $dataht;
         $saveintable->save();
 
         return $this->render('index');
@@ -131,13 +131,13 @@ class DefaultController extends Controller
                 foreach ($dataform as $idtable) {
                     if ($request->post('id')[$number] == $idtable['id']) {
                         $saveintable = Dataforms::findOne($request->post('id')[$number]);
-                        $saveintable->datafilds = $row[0][0];
+                        $saveintable->datafields = $row[0][0];
                         $saveintable->save();
                         $saveintable = Dataforms::findOne($request->post('id')[$number] + 1);
-                        $saveintable->datafilds = $row[0][1];
+                        $saveintable->datafields = $row[0][1];
                         $saveintable->save();
                         $saveintable = Dataforms::findOne($request->post('id')[$number] + 2);
-                        $saveintable->datafilds = $row[0][2];
+                        $saveintable->datafields = $row[0][2];
                         $saveintable->save();
                         if (isset($row[1])) {
                             $saveintable = new Form2email();
@@ -180,18 +180,18 @@ class DefaultController extends Controller
                     //Сохранение всех textarea  в строке
                     $saveintable = new Dataforms();
                     $saveintable->namefieldsforms = 'Наименование учредителя образовательной организации';
-                    $saveintable->datafilds = $row[0][0];
+                    $saveintable->datafields = $row[0][0];
                     $saveintable->save();
                     $idfordop = Yii::$app->db->getLastInsertID();
 
                     $saveintable = new Dataforms();
                     $saveintable->namefieldsforms = 'Юридический адрес учредителя';
-                    $saveintable->datafilds = $row[0][1];
+                    $saveintable->datafields = $row[0][1];
                     $saveintable->save();
 
                     $saveintable = new Dataforms();
                     $saveintable->namefieldsforms = 'Контактный телефон учредителя';
-                    $saveintable->datafilds = $row[0][2];
+                    $saveintable->datafields = $row[0][2];
                     $saveintable->save();
                     //Конец сохранения всех textarea  в строке
 
@@ -222,9 +222,9 @@ class DefaultController extends Controller
         $addres = Form2addres::find()->all();
         $email = Form2email::find()->all();
         $query = new Query();
-        $query1 = $query->select(['id', 'datafilds',])->from('dataforms')->where(['namefieldsforms' => 'Наименование учредителя образовательной организации'])->all();
-        $query2 = $query->select(['id', 'datafilds',])->from('dataforms')->where(['namefieldsforms' => 'Юридический адрес учредителя'])->all();
-        $query3 = $query->select(['id', 'datafilds',])->from('dataforms')->where(['namefieldsforms' => 'Контактный телефон учредителя'])->all();
+        $query1 = $query->select(['id', 'datafields',])->from('dataforms')->where(['namefieldsforms' => 'Наименование учредителя образовательной организации'])->all();
+        $query2 = $query->select(['id', 'datafields',])->from('dataforms')->where(['namefieldsforms' => 'Юридический адрес учредителя'])->all();
+        $query3 = $query->select(['id', 'datafields',])->from('dataforms')->where(['namefieldsforms' => 'Контактный телефон учредителя'])->all();
         return $this->render('form2', ['query1' => $query1, 'query2' => $query2, 'query3' => $query3, 'dataform' => $dataform, 'tableaddres' => $addres, 'tableemail' => $email]);
     }
 
@@ -358,11 +358,11 @@ class DefaultController extends Controller
                     if ($request->post('id')[$number] == $id['id']) {
                         $dataforms = new Dataforms();
                         $save = $dataforms::findOne($request->post('id')[$number]);
-                        $save->datafilds = $fild[0];
+                        $save->datafields = $fild[0];
                         $save->save();
                         $dataforms = new Dataforms();
                         $save = $dataforms::findOne($request->post('id')[$number] + 1);
-                        $save->datafilds = $fild[1];
+                        $save->datafields = $fild[1];
                         $save->save();
                         $p = 1;
                     }
@@ -370,11 +370,11 @@ class DefaultController extends Controller
                 if ($p == 0) {
                     $dataforms = new Dataforms();
                     $dataforms->namefieldsforms = 'Название для ссылки';
-                    $dataforms->datafilds = $fild[0];
+                    $dataforms->datafields = $fild[0];
                     $dataforms->save();
                     $dataforms = new Dataforms();
                     $dataforms->namefieldsforms = 'Ссылка';
-                    $dataforms->datafilds = $fild[1];
+                    $dataforms->datafields = $fild[1];
                     $dataforms->save();
                 }
             }
@@ -396,7 +396,7 @@ class DefaultController extends Controller
                 $saveintable = new Dataforms();
                 $saveintable->fieldsforms_id = $row[1];
                 $saveintable->namefieldsforms = $row[2];
-                $saveintable->datafilds = $row[3];
+                $saveintable->datafields = $row[3];
                 if ($saveintable->validate()) {
                     //Проверка, что запись старая
                     if ($row[0] != '0') {
@@ -404,7 +404,7 @@ class DefaultController extends Controller
                             if ($row[0] == $idtable['id']) {
                                 $saveintable = Dataforms::findOne($row[0]);
                                 $saveintable->namefieldsforms = $row[2];
-                                $saveintable->datafilds = $row[3];
+                                $saveintable->datafields = $row[3];
                                 $saveintable->save();
                                 break;
                             }
@@ -422,14 +422,14 @@ class DefaultController extends Controller
                         $wrong[] = [
                             "namefieldsforms" => $row[2],
                             "id" => 0,
-                            "datafilds" => $row[3],
+                            "datafields" => $row[3],
                             "fieldsforms_id" => $row[1]
                         ];
                     } else {
                         $wrong[] = [
                             "namefieldsforms" => $row[2],
                             "id" => $row[0],
-                            "datafilds" => $row[3],
+                            "datafields" => $row[3],
                             "fieldsforms_id" => $row[1]
                         ];
                     }
@@ -452,7 +452,7 @@ class DefaultController extends Controller
                     foreach ($data as $tabledata) {
                         if ($wr["id"] == $tabledata["id"]) {
                             $tabledata["namefieldsforms"] = $wr["namefieldsforms"];
-                            $tabledata["datafilds"] = $wr["datafilds"];
+                            $tabledata["datafields"] = $wr["datafields"];
                             break;
                         }
                     }
@@ -474,14 +474,14 @@ class DefaultController extends Controller
                 $saveintable = new Dataforms();
                 $saveintable->fieldsforms_id = $row[1];
                 $saveintable->namefieldsforms = $row[2];
-                $saveintable->datafilds = $row[3];
+                $saveintable->datafields = $row[3];
                 if ($saveintable->validate()) {
                     if ($row[0] != '0') {
                         foreach ($data as $idtable) {
                             if ($row[0] == $idtable['id']) {
                                 $saveintable = Dataforms::findOne($row[0]);
                                 $saveintable->namefieldsforms = $row[2];
-                                $saveintable->datafilds = $row[3];
+                                $saveintable->datafields = $row[3];
                                 $saveintable->save();
                                 break;
                             }
@@ -499,14 +499,14 @@ class DefaultController extends Controller
                         $wrong[] = [
                             "namefieldsforms" => $row[2],
                             "id" => 0,
-                            "datafilds" => $row[3],
+                            "datafields" => $row[3],
                             "fieldsforms_id" => $row[1]
                         ];
                     } else {
                         $wrong[] = [
                             "namefieldsforms" => $row[2],
                             "id" => $row[0],
-                            "datafilds" => $row[3],
+                            "datafields" => $row[3],
                             "fieldsforms_id" => $row[1]
                         ];
                     }
@@ -529,7 +529,7 @@ class DefaultController extends Controller
                     foreach ($data as $tabledata) {
                         if ($wr["id"] == $tabledata["id"]) {
                             $tabledata["namefieldsforms"] = $wr["namefieldsforms"];
-                            $tabledata["datafilds"] = $wr["datafilds"];
+                            $tabledata["datafields"] = $wr["datafields"];
                             break;
                         }
                     }

@@ -33,10 +33,10 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
                             <input type="text" name="paid_educational[<?php echo $count_row ?>][]" placeholder="Статья"
-                                value="<?php echo $name['namefildsforms'] ?>" required><br>
+                                value="<?php echo $name['namefieldsforms'] ?>" required><br>
                             <label for="url<?php echo $count_row ?>">Ссылка</label>
                             <input type="url" name="paid_educational[<?php echo $count_row ?>][]" placeholder="https://example.com"
-                                pattern="https://.*" required value="<?php echo $name['datafilds'] ?>">
+                                pattern="https://.*" required value="<?php echo $name['datafields'] ?>">
                         </div>
                         <div>
                             <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_paid_edu'>X</button>
@@ -58,10 +58,10 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
                             <input type="text" name="paid_educational[<?php echo $count_row ?>][]" placeholder="Статья"
-                                value="<?php echo $name['namefildsforms'] ?>" required><br>
+                                value="<?php echo $name['namefieldsforms'] ?>" required><br>
                             <label for="url<?php echo $count_row ?>">Ссылка</label>
                             <input type="url" name="paid_educational[<?php echo $count_row ?>][]" placeholder="https://example.com"
-                                pattern="https://.*" required value="<?php echo $name['datafilds'] ?>">
+                                pattern="https://.*" required value="<?php echo $name['datafields'] ?>">
                         </div>
                         <div>
                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_paid_edu'>X</button>
@@ -82,10 +82,10 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
                             <input type="text" name="paid_educational[<?php echo $count_row ?>][]" placeholder="Статья"
-                                value="<?php echo $name['namefildsforms'] ?>" required><br>
+                                value="<?php echo $name['namefieldsforms'] ?>" required><br>
                             <label for="url<?php echo $count_row ?>">Ссылка</label>
                             <input type="url" name="paid_educational[<?php echo $count_row ?>][]" placeholder="https://example.com"
-                                pattern="https://.*" required value="<?php echo $name['datafilds'] ?>">
+                                pattern="https://.*" required value="<?php echo $name['datafields'] ?>">
                         </div>
                         <div>
                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_paid_edu'>X</button>
@@ -114,10 +114,10 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
                             <input type="text" name="paid_educational[<?php echo $count_row ?>][]" placeholder="Статья"
-                                value="<?php echo $name['namefildsforms'] ?>" required><br>
+                                value="<?php echo $name['namefieldsforms'] ?>" required><br>
                             <label for="url<?php echo $count_row ?>">Ссылка</label>
                             <input type="url" name="paid_educational[<?php echo $count_row ?>][]" placeholder="https://example.com"
-                                pattern="https://.*" required value="<?php echo $name['datafilds'] ?>">
+                                pattern="https://.*" required value="<?php echo $name['datafields'] ?>">
                         </div>
                         <div>
                            <button type="button" id="delrow" class="btn btn-danger delbutton" tabindex="-1" value='/delete_paid_edu'>X</button>

@@ -7,12 +7,12 @@ use Yii;
 /**
  * This is the model class for table "dataforms".
  *
- * @property int $iddataforms
- * @property string $namefildsforms
- * @property string|null $datafilds
- * @property string|null $variable
+ * @property int $id
+ * @property string $namefieldsforms
+ * @property string|null $datafields
+ * @property int $fieldsforms_id
  * 
- * @property Form2addres[] $form2addres
+ * @property Form2addres[] $form2addresdatafilds
  * @property Form2email[] $form2emails
  */
 class Dataforms extends \yii\db\ActiveRecord
@@ -31,11 +31,11 @@ class Dataforms extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['namefildsforms'],'required'],
-            [['variable'], 'required'],
-            [['variable'], 'number'],
-            [['datafilds'],'required'],
-            [['datafilds'],'url','message'=>'Это не ссылка'],
+            [['namefieldsforms'],'required'],
+            [['fieldsforms_id'], 'required'],
+            [['fieldsforms_id'], 'number'],
+            [['datafields'],'required'],
+            [['datafields'],'url','message'=>'Это не ссылка'],
         ];
     }
 
@@ -45,10 +45,10 @@ class Dataforms extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'iddataforms' => 'Iddataforms',
-            'namefildsforms' => 'Namefildsforms',
-            'datafilds' => 'Datafilds',
-            'variable' => 'Variable',
+            'id' => 'id',
+            'namefieldsforms' => 'namefieldsforms',
+            'datafields' => 'Datafilds',
+            'fieldsforms_id' => 'fieldsforms_id',
         ];
     }
 
@@ -59,7 +59,7 @@ class Dataforms extends \yii\db\ActiveRecord
      */
     public function getForm2addres()
     {
-        return $this->hasMany(Form2addres::class, ['iddataforms' => 'iddataforms']);
+        return $this->hasMany(Form2addres::class, ['id' => 'id']);
     }
 
     /**
@@ -69,6 +69,6 @@ class Dataforms extends \yii\db\ActiveRecord
      */
     public function getForm2emails()
     {
-        return $this->hasMany(Form2email::class, ['iddataforms' => 'iddataforms']);
+        return $this->hasMany(Form2email::class, ['id' => 'id']);
     }
 }

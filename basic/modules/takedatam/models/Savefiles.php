@@ -7,11 +7,14 @@ use Yii;
 /**
  * This is the model class for table "savefiles".
  *
- * @property int $idsavefiles
- * @property string|null $Titel
- * @property string|null $NameFile
- * @property string|null $Link
- * @property string|null $Position
+ * @property int $id
+ * @property string $titel
+ * @property integer $fieldsforms_id
+ * @property string|null $link
+ * @property string $position
+ * @property int $enabled
+ * @property string $created_at
+ * @property string|null $updated_at
  */
 class Savefiles extends \yii\db\ActiveRecord
 {
@@ -29,10 +32,11 @@ class Savefiles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Titel', 'NameFile'],'required'],
-            [['Titel', 'NameFile','Position'],'string'],
-            ['Position','match','pattern'=>'/^[a-zA-Z0-9_-]{31,32}$/'],
-            [ 'Link','match','pattern'=>'/^http:\/\/192.168.33.23:9000\/testbucket\/[a-zA-Z0-9_-]{31,32}$/'],
+            [['titel', 'position'], 'required'],
+            [['titel','position'],'string'],
+            [['enabled','fieldsforms_id'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
+            [ 'link','url'],
         ];
     }
 
@@ -42,11 +46,14 @@ class Savefiles extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idsavefiles' => 'Idsavefiles',
-            'Titel' => 'Titel',
-            'NameFile' => 'Name File',
-            'Link' => 'Link',
-            'Position' => 'Position',
+            'id' => 'id',
+            'titel' => 'Titel',
+            'namefile' => 'Name File',
+            'link' => 'Link',
+            'position' => 'Position',
+            'enabled' => 'Enabled',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 }
