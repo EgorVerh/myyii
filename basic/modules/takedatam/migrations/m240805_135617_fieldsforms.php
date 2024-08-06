@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m240805_135617_fildsforms extends Migration
+class m240805_135617_fieldsforms extends Migration
 {
     public function safeUp()
     {
