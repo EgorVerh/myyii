@@ -10,7 +10,7 @@ class m240805_134031_Relations extends Migration
     {
         $this->addForeignKey('fk_dataforms_fieldsforms_id',
             '{{%dataforms}}','fieldsforms_id',
-            '{{%fildsforms}}','id',
+            '{{%fieldsforms}}','id',
             'CASCADE','CASCADE'
          );
     }
