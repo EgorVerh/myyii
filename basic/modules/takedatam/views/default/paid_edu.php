@@ -28,7 +28,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                 if ($name['fieldsforms_id'] == 1) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
-                            value="<?php echo $name['iddataforms'] ?>">
+                            value="<?php echo $name['id'] ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]" value=1>
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
@@ -53,7 +53,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                 if ($name['fieldsforms_id'] == 2) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
-                            value="<?php echo $name['iddataforms'] ?>">
+                            value="<?php echo $name['id'] ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]" value=2>
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
@@ -77,7 +77,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                 if ($name['fieldsforms_id'] == 3) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
-                            value="<?php echo $name['iddataforms'] ?>">
+                            value="<?php echo $name['id'] ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]" value=3>
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
@@ -109,7 +109,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                 if ($name['fieldsforms_id'] == 4) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
-                            value="<?php echo $name['iddataforms'] ?>">
+                            value="<?php echo $name['id'] ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]" value=4>
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>

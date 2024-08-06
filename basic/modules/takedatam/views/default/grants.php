@@ -27,7 +27,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                 if ($name['fieldsforms_id'] == 5) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
-                            value="<?php echo $name['iddataforms'] ?>">
+                            value="<?php echo $name['id'] ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]" value=5>
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
@@ -50,7 +50,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                 if ($name['fieldsforms_id'] == 6) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
-                            value="<?php echo $name['iddataforms'] ?>">
+                            value="<?php echo $name['id'] ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]" value=6>
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
@@ -73,7 +73,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                 if ($name['fieldsforms_id'] == 7) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
-                            value="<?php echo $name['iddataforms'] ?>">
+                            value="<?php echo $name['id'] ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]" value=7>
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
@@ -97,7 +97,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                 if ($name['fieldsforms_id'] == 8) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
-                            value="<?php echo $name['iddataforms'] ?>">
+                            value="<?php echo $name['id'] ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]" value=8>
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
@@ -120,7 +120,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                 if ($name['fieldsforms_id'] == 9) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
-                            value="<?php echo $name['iddataforms'] ?>">
+                            value="<?php echo $name['id'] ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]" value=9>
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
@@ -143,7 +143,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                 if ($name['fieldsforms_id'] == 10) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
-                            value="<?php echo $name['iddataforms'] ?>">
+                            value="<?php echo $name['id'] ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]" value=10>
                         <div class="col-sm-11">
                             <label for="text<?php echo $count_row ?>">Название для ссылки</label>
