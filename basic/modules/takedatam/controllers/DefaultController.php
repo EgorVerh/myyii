@@ -11,6 +11,7 @@ use frontend\modules\takedatam\models\Form2addres;
 use frontend\modules\takedatam\models\Form2email;
 use frontend\modules\takedatam\models\Savefiles;
 use frontend\modules\takedatam\models\UploadForm;
+use frontend\modules\takedatam\models\Fieldsform;
 use yii\web\UploadedFile;
 use frontend\models\StorageUploadForm;
 use common\models\storage\Upload;
@@ -101,19 +102,19 @@ class DefaultController extends Controller
     {
         $request = Yii::$app->request;
         $saveintable = new Dataforms();
-        $saveintable->namefildsforms = 'О полном наименовании образовательной организации';
+        $saveintable->namefieldsforms = 'О полном наименовании образовательной организации';
         $dataht = $request->get('Textarea1');
         $saveintable->datafilds = $dataht;
         $saveintable->save();
 
         $saveintable = new Dataforms();
-        $saveintable->namefildsforms = 'Сокращенное (при наличии) наименование образовательной организации';
+        $saveintable->namefieldsforms = 'Сокращенное (при наличии) наименование образовательной организации';
         $dataht = $request->get('Textarea2');
         $saveintable->datafilds = $dataht;
         $saveintable->save();
 
         $saveintable = new Dataforms();
-        $saveintable->namefildsforms = 'Дата создания образовательной организации';
+        $saveintable->namefieldsforms = 'Дата создания образовательной организации';
         $dataht = $request->get('Textarea3');
         $saveintable->datafilds = $dataht;
         $saveintable->save();
@@ -128,7 +129,7 @@ class DefaultController extends Controller
             foreach ($request->post('Massrows') as $number => $row) {
                 $p = 0;
                 foreach ($dataform as $idtable) {
-                    if ($request->post('id')[$number] == $idtable['iddataforms']) {
+                    if ($request->post('id')[$number] == $idtable['id']) {
                         $saveintable = Dataforms::findOne($request->post('id')[$number]);
                         $saveintable->datafilds = $row[0][0];
                         $saveintable->save();
@@ -140,7 +141,7 @@ class DefaultController extends Controller
                         $saveintable->save();
                         if (isset($row[1])) {
                             $saveintable = new Form2email();
-                            $emails = $saveintable::findAll(['iddataforms' => $request->post('id')[$number]]);
+                            $emails = $saveintable::findAll(['id' => $request->post('id')[$number]]);
                             foreach ($row[1] as $num => $row1) {
                                 if (isset($emails[$num]['idform2email'])) {
                                     $save = $saveintable::findOne(['idform2email' => $emails[$num]['idform2email']]);
@@ -149,7 +150,7 @@ class DefaultController extends Controller
                                 } else {
                                     $saveintable = new Form2email();
                                     $saveintable->email = $row1;
-                                    $saveintable->iddataforms = $request->post('id')[$number];
+                                    $saveintable->id = $request->post('id')[$number];
                                     $saveintable->save();
                                 }
 
@@ -157,7 +158,7 @@ class DefaultController extends Controller
                         }
                         if (isset($row[2])) {
                             $saveintable = new Form2addres();
-                            $address = $saveintable::findAll(['iddataforms' => $request->post('id')[$number]]);
+                            $address = $saveintable::findAll(['id' => $request->post('id')[$number]]);
                             foreach ($row[2] as $n => $row2) {
                                 if (isset($address[$n]['idform2addres'])) {
                                     $save = $saveintable::findOne(['idform2addres' => $address[$n]['idform2addres']]);
@@ -166,7 +167,7 @@ class DefaultController extends Controller
                                 } else {
                                     $saveintable = new Form2addres();
                                     $saveintable->addres = $row2;
-                                    $saveintable->iddataforms = $request->post('id')[$number];
+                                    $saveintable->id = $request->post('id')[$number];
                                     $saveintable->save();
                                 }
 
@@ -178,18 +179,18 @@ class DefaultController extends Controller
                 if ($p == 0) {
                     //Сохранение всех textarea  в строке
                     $saveintable = new Dataforms();
-                    $saveintable->namefildsforms = 'Наименование учредителя образовательной организации';
+                    $saveintable->namefieldsforms = 'Наименование учредителя образовательной организации';
                     $saveintable->datafilds = $row[0][0];
                     $saveintable->save();
                     $idfordop = Yii::$app->db->getLastInsertID();
 
                     $saveintable = new Dataforms();
-                    $saveintable->namefildsforms = 'Юридический адрес учредителя';
+                    $saveintable->namefieldsforms = 'Юридический адрес учредителя';
                     $saveintable->datafilds = $row[0][1];
                     $saveintable->save();
 
                     $saveintable = new Dataforms();
-                    $saveintable->namefildsforms = 'Контактный телефон учредителя';
+                    $saveintable->namefieldsforms = 'Контактный телефон учредителя';
                     $saveintable->datafilds = $row[0][2];
                     $saveintable->save();
                     //Конец сохранения всех textarea  в строке
@@ -198,7 +199,7 @@ class DefaultController extends Controller
                     if (isset($row[1])) {
                         foreach ($row[1] as $row1) {
                             $saveintable = new Form2email();
-                            $saveintable->iddataforms = $idfordop;
+                            $saveintable->id = $idfordop;
                             $saveintable->email = $row1;
                             $saveintable->save();
                         }
@@ -206,7 +207,7 @@ class DefaultController extends Controller
                     if (isset($row[2])) {
                         foreach ($row[2] as $row2) {
                             $saveintable = new Form2addres();
-                            $saveintable->iddataforms = $idfordop;
+                            $saveintable->id = $idfordop;
                             $saveintable->addres = $row2;
                             $saveintable->save();
                         }
@@ -221,9 +222,9 @@ class DefaultController extends Controller
         $addres = Form2addres::find()->all();
         $email = Form2email::find()->all();
         $query = new Query();
-        $query1 = $query->select(['iddataforms', 'datafilds',])->from('dataforms')->where(['namefildsforms' => 'Наименование учредителя образовательной организации'])->all();
-        $query2 = $query->select(['iddataforms', 'datafilds',])->from('dataforms')->where(['namefildsforms' => 'Юридический адрес учредителя'])->all();
-        $query3 = $query->select(['iddataforms', 'datafilds',])->from('dataforms')->where(['namefildsforms' => 'Контактный телефон учредителя'])->all();
+        $query1 = $query->select(['id', 'datafilds',])->from('dataforms')->where(['namefieldsforms' => 'Наименование учредителя образовательной организации'])->all();
+        $query2 = $query->select(['id', 'datafilds',])->from('dataforms')->where(['namefieldsforms' => 'Юридический адрес учредителя'])->all();
+        $query3 = $query->select(['id', 'datafilds',])->from('dataforms')->where(['namefieldsforms' => 'Контактный телефон учредителя'])->all();
         return $this->render('form2', ['query1' => $query1, 'query2' => $query2, 'query3' => $query3, 'dataform' => $dataform, 'tableaddres' => $addres, 'tableemail' => $email]);
     }
 
@@ -241,7 +242,7 @@ class DefaultController extends Controller
                 $p = 0;
                 if ($name != '') {
                     foreach ($savefilestable as $data) {
-                        if ($_POST['upload_file'][$file] == $data['Position']) {
+                        if ($_POST['upload_file'][$file] == $data['position']) {
                             $s3 = new S3Client([
                                 'version' => 'latest',
                                 'region' => 'msk',
@@ -272,10 +273,10 @@ class DefaultController extends Controller
                             if ($lastdotposition !== false) {
                                 $link = substr($presignedUrl, 0, $lastdotposition);
                             }
-                            $saveintable = Savefiles::findOne($data["idsavefiles"]);
-                            $saveintable->Titel = $_POST['Textarea'][$file];
-                            $saveintable->NameFile = $_POST['Textarea'][$file];
-                            $saveintable->Link = $link;
+                            $saveintable = Savefiles::findOne($data["id"]);
+                            $saveintable->titel = $_POST['Textarea'][$file];
+                            $saveintable->fieldsforms_id = $_POST['Textarea'][$file];
+                            $saveintable->link = $link;
                             $saveintable->save();
                             $p = 1;
                             break;
@@ -314,17 +315,17 @@ class DefaultController extends Controller
                             $link = substr($presignedUrl, 0, $lastdotposition);
                         }
                         $saveintable = new Savefiles();
-                        $saveintable->Titel = $_POST['Textarea'][$file];
-                        $saveintable->NameFile = $request->post('Textarea')[$file];
-                        $saveintable->Link = $link;
-                        $saveintable->Position = $position;
+                        $saveintable->titel = $_POST['Textarea'][$file];
+                        $saveintable->fieldsforms_id = $request->post('Textarea')[$file];
+                        $saveintable->link = $link;
+                        $saveintable->position = $position;
                         $saveintable->save();
                     }
                 } else {
                     foreach ($savefilestable as $data) {
-                        if ($_POST['upload_file'][$file] == $data['Position']) {
-                            $saveintable = Savefiles::findOne($data["idsavefiles"]);
-                            $saveintable->Titel = $_POST['Textarea'][$file];
+                        if ($_POST['upload_file'][$file] == $data['position']) {
+                            $saveintable = Savefiles::findOne($data["id"]);
+                            $saveintable->titel = $_POST['Textarea'][$file];
                             $saveintable->save();
                             $p = 1;
                             break;
@@ -334,8 +335,8 @@ class DefaultController extends Controller
                         $randomString = Yii::$app->getSecurity()->generateRandomString();
                         $position = trim($randomString, "_-");
                         $saveintable = new Savefiles();
-                        $saveintable->Titel = $_POST['Textarea'][$file];
-                        $saveintable->Position = $position;
+                        $saveintable->titel = $_POST['Textarea'][$file];
+                        $saveintable->position = $position;
                         $saveintable->save();
                     }
                 }
@@ -349,12 +350,12 @@ class DefaultController extends Controller
     {
         $request = Yii::$app->request;
         $dataforms = new Dataforms();
-        $data = $dataforms::find()->select(['iddataforms'])->where(['namefildsforms' => 'Название для ссылки'])->all();
+        $data = $dataforms::find()->select(['id'])->where(['namefieldsforms' => 'Название для ссылки'])->all();
         if ($request->post('Fieldsurl')) {
             foreach ($request->post('Fieldsurl') as $number => $fild) {
                 $p = 0;
                 foreach ($data as $id) {
-                    if ($request->post('id')[$number] == $id['iddataforms']) {
+                    if ($request->post('id')[$number] == $id['id']) {
                         $dataforms = new Dataforms();
                         $save = $dataforms::findOne($request->post('id')[$number]);
                         $save->datafilds = $fild[0];
@@ -368,11 +369,11 @@ class DefaultController extends Controller
                 }
                 if ($p == 0) {
                     $dataforms = new Dataforms();
-                    $dataforms->namefildsforms = 'Название для ссылки';
+                    $dataforms->namefieldsforms = 'Название для ссылки';
                     $dataforms->datafilds = $fild[0];
                     $dataforms->save();
                     $dataforms = new Dataforms();
-                    $dataforms->namefildsforms = 'Ссылка';
+                    $dataforms->namefieldsforms = 'Ссылка';
                     $dataforms->datafilds = $fild[1];
                     $dataforms->save();
                 }
@@ -380,8 +381,8 @@ class DefaultController extends Controller
             return $this->redirect('form4');
         }
         $dataforms = new Dataforms();
-        $nameurl = $dataforms::find()->where(['namefildsforms' => 'Название для ссылки'])->all();
-        $url = $dataforms::find()->where(['namefildsforms' => 'Ссылка'])->all();
+        $nameurl = $dataforms::find()->where(['namefieldsforms' => 'Название для ссылки'])->all();
+        $url = $dataforms::find()->where(['namefieldsforms' => 'Ссылка'])->all();
         return $this->render('form4', ['nameurl' => $nameurl, 'url' => $url]);
     }
     public function actionPaidedu()
@@ -390,19 +391,19 @@ class DefaultController extends Controller
         $request = Yii::$app->request;
         if ($request->post('paid_educational')) {
             $takedata = new Dataforms();
-            $data = $takedata::find()->where(['or', 'variable=1', 'variable=2', 'variable=3', 'variable=4'])->all();
+            $data = $takedata::find()->where(['or', 'fieldsforms_id=1', 'fieldsforms_id=2', 'fieldsforms_id=3', 'fieldsforms_id=4'])->all();
             foreach ($request->post('paid_educational') as $row) {
                 $saveintable = new Dataforms();
-                $saveintable->variable = $row[1];
-                $saveintable->namefildsforms = $row[2];
+                $saveintable->fieldsforms_id = $row[1];
+                $saveintable->namefieldsforms = $row[2];
                 $saveintable->datafilds = $row[3];
                 if ($saveintable->validate()) {
                     //Проверка, что запись старая
                     if ($row[0] != '0') {
                         foreach ($data as $idtable) {
-                            if ($row[0] == $idtable['iddataforms']) {
+                            if ($row[0] == $idtable['id']) {
                                 $saveintable = Dataforms::findOne($row[0]);
-                                $saveintable->namefildsforms = $row[2];
+                                $saveintable->namefieldsforms = $row[2];
                                 $saveintable->datafilds = $row[3];
                                 $saveintable->save();
                                 break;
@@ -419,17 +420,17 @@ class DefaultController extends Controller
                     // Проверка на то какая это запись, новая или старая
                     if ($row[0] == 0) {
                         $wrong[] = [
-                            "namefildsforms" => $row[2],
-                            "iddataforms" => 0,
+                            "namefieldsforms" => $row[2],
+                            "id" => 0,
                             "datafilds" => $row[3],
-                            "variable" => $row[1]
+                            "fieldsforms_id" => $row[1]
                         ];
                     } else {
                         $wrong[] = [
-                            "namefildsforms" => $row[2],
-                            "iddataforms" => $row[0],
+                            "namefieldsforms" => $row[2],
+                            "id" => $row[0],
                             "datafilds" => $row[3],
-                            "variable" => $row[1]
+                            "fieldsforms_id" => $row[1]
                         ];
                     }
                     // Создание переменной в сесси wrong_data, которая будет содержать ошибки допущенные пользователем
@@ -440,17 +441,17 @@ class DefaultController extends Controller
             return $this->redirect('');
         }
         $takedata = new Dataforms();
-        $data = $takedata::find()->where(['or', 'variable=1', 'variable=2', 'variable=3', 'variable=4'])->all();
+        $data = $takedata::find()->where(['or', 'fieldsforms_id=1', 'fieldsforms_id=2', 'fieldsforms_id=3', 'fieldsforms_id=4'])->all();
         // Проверка на то  есть ли переменная wrong_data
         if (Yii::$app->session->has('wrong_data')) {
             $wrong_data = Yii::$app->session->get('wrong_data');
             //Если переменная wrong_data есть, сравнимаем полученные данные из таблицы 
             //и либо заменяем их, либо добавляем новые в массив data
             foreach ($wrong_data as $wr) {
-                if ($wr["iddataforms"] != 0) {
+                if ($wr["id"] != 0) {
                     foreach ($data as $tabledata) {
-                        if ($wr["iddataforms"] == $tabledata["iddataforms"]) {
-                            $tabledata["namefildsforms"] = $wr["namefildsforms"];
+                        if ($wr["id"] == $tabledata["id"]) {
+                            $tabledata["namefieldsforms"] = $wr["namefieldsforms"];
                             $tabledata["datafilds"] = $wr["datafilds"];
                             break;
                         }
@@ -468,18 +469,18 @@ class DefaultController extends Controller
         $request = Yii::$app->request;
         if ($request->post('paid_educational')) {
             $takedata = new Dataforms();
-            $data = $takedata::find()->where(['or', 'variable=5', 'variable=6', 'variable=7', 'variable=8', 'variable=9', 'variable=10'])->all();
+            $data = $takedata::find()->where(['or', 'fieldsforms_id=5', 'fieldsforms_id=6', 'fieldsforms_id=7', 'fieldsforms_id=8', 'fieldsforms_id=9', 'fieldsforms_id=10'])->all();
             foreach ($request->post('paid_educational') as $row) {
                 $saveintable = new Dataforms();
-                $saveintable->variable = $row[1];
-                $saveintable->namefildsforms = $row[2];
+                $saveintable->fieldsforms_id = $row[1];
+                $saveintable->namefieldsforms = $row[2];
                 $saveintable->datafilds = $row[3];
                 if ($saveintable->validate()) {
                     if ($row[0] != '0') {
                         foreach ($data as $idtable) {
-                            if ($row[0] == $idtable['iddataforms']) {
+                            if ($row[0] == $idtable['id']) {
                                 $saveintable = Dataforms::findOne($row[0]);
-                                $saveintable->namefildsforms = $row[2];
+                                $saveintable->namefieldsforms = $row[2];
                                 $saveintable->datafilds = $row[3];
                                 $saveintable->save();
                                 break;
@@ -496,17 +497,17 @@ class DefaultController extends Controller
                     // Проверка на то какая это запись, новая или старая
                     if ($row[0] == 0) {
                         $wrong[] = [
-                            "namefildsforms" => $row[2],
-                            "iddataforms" => 0,
+                            "namefieldsforms" => $row[2],
+                            "id" => 0,
                             "datafilds" => $row[3],
-                            "variable" => $row[1]
+                            "fieldsforms_id" => $row[1]
                         ];
                     } else {
                         $wrong[] = [
-                            "namefildsforms" => $row[2],
-                            "iddataforms" => $row[0],
+                            "namefieldsforms" => $row[2],
+                            "id" => $row[0],
                             "datafilds" => $row[3],
-                            "variable" => $row[1]
+                            "fieldsforms_id" => $row[1]
                         ];
                     }
                     // Создание переменной в сесси wrong_data, которая будет содержать ошибки допущенные пользователем
@@ -517,17 +518,17 @@ class DefaultController extends Controller
             return $this->redirect('grants');
         }
         $takedata = new Dataforms();
-        $data = $takedata::find()->where(['or', 'variable=5', 'variable=6', 'variable=7', 'variable=8', 'variable=9', 'variable=10'])->all();
+        $data = $takedata::find()->where(['or', 'fieldsforms_id=5', 'fieldsforms_id=6', 'fieldsforms_id=7', 'fieldsforms_id=8', 'fieldsforms_id=9', 'fieldsforms_id=10'])->all();
         // Проверка на то  есть ли переменная wrong_data
         if (Yii::$app->session->has('wrong_data')) {
             $wrong_data = Yii::$app->session->get('wrong_data');
             //Если переменная wrong_data есть, сравнимаем полученные данные из таблицы 
             //и либо заменяем их, либо добавляем новые в массив data
             foreach ($wrong_data as $wr) {
-                if ($wr["iddataforms"] != 0) {
+                if ($wr["id"] != 0) {
                     foreach ($data as $tabledata) {
-                        if ($wr["iddataforms"] == $tabledata["iddataforms"]) {
-                            $tabledata["namefildsforms"] = $wr["namefildsforms"];
+                        if ($wr["id"] == $tabledata["id"]) {
+                            $tabledata["namefieldsforms"] = $wr["namefieldsforms"];
                             $tabledata["datafilds"] = $wr["datafilds"];
                             break;
                         }
@@ -575,7 +576,7 @@ class DefaultController extends Controller
                         if ($request->post('document')[$file][0] != '0') {
                             //Поиск записи и её перезапись
                             foreach ($tabledata as $data) {
-                                if ($request->post('document')[$file][0] == $data['Position']) {
+                                if ($request->post('document')[$file][0] == $data['position']) {
                                     $s3 = new S3Client([
                                         'version' => 'latest',
                                         'region' => 'msk',
@@ -586,7 +587,7 @@ class DefaultController extends Controller
                                         ],
                                         'endpoint' => $endpoint,
                                     ]);
-                                    $position = $data['Position'];
+                                    $position = $data['position'];
                                     $s3->putObject([
                                         'Bucket' => $bucket,
                                         'Key' => $position,
@@ -605,11 +606,10 @@ class DefaultController extends Controller
                                     if ($lastdotposition !== false) {
                                         $link = substr($presignedUrl, 0, $lastdotposition);
                                     }
-                                    $saveintable = Savefiles::findOne($data["idsavefiles"]);
-                                    $saveintable->Titel = $request->post('document')[$file][2];
-                                    $saveintable->NameFile = $request->post('document')[$file][1];
-                                    $saveintable->Link = $link;
-                                    $saveintable->Position = $position;
+                                    $saveintable = Savefiles::findOne($data["id"]);
+                                    $saveintable->titel = $request->post('document')[$file][2];
+                                    $saveintable->link = $link;
+                                    $saveintable->updated_at = new \yii\db\Expression('NOW()');
                                     if ($saveintable->validate()) {
                                         $saveintable->save();
                                     } else {
@@ -630,8 +630,9 @@ class DefaultController extends Controller
                                 ],
                                 'endpoint' => $endpoint,
                             ]);
-                            $randomString = Yii::$app->getSecurity()->generateRandomString();
-                            $position = trim($randomString, "_-");
+                            $tabel_filds = Fieldsform::findOne($request->post('document')[$file][1]);
+                            $count_upload_doc = $tabel_filds->count_upload_doc + 1;
+                            $position = $tabel_filds->fieldform . $count_upload_doc;
                             $testMimeType = FileHelper::getMimeTypeByExtension($name);
                             $s3->putObject([
                                 'Bucket' => $bucket,
@@ -652,11 +653,13 @@ class DefaultController extends Controller
                                 $link = substr($presignedUrl, 0, $lastdotposition);
                             }
                             $saveintable = new Savefiles();
-                            $saveintable->Titel = $request->post('document')[$file][2];
-                            $saveintable->NameFile = $request->post('document')[$file][1];
-                            $saveintable->Link = $link;
-                            $saveintable->Position = $position;
+                            $saveintable->titel = $request->post('document')[$file][2];
+                            $saveintable->fieldsforms_id = $request->post('document')[$file][1];
+                            $saveintable->link = $link;
+                            $saveintable->position = $position;
                             if ($saveintable->validate()) {
+                                $tabel_filds->count_upload_doc = $count_upload_doc;
+                                $tabel_filds->save();
                                 $saveintable->save();
                             } else {
                                 $p = 1;
@@ -671,11 +674,10 @@ class DefaultController extends Controller
                     if ($request->post('document')[$file][0] != '0') {
                         foreach ($tabledata as $data) {
                             //Поиск записи и её перезапись
-                            if ($request->post('document')[$file][0] == $data['Position']) {
-                                $saveintable = Savefiles::findOne($data["idsavefiles"]);
-                                $saveintable->Titel = $request->post('document')[$file][2];
-                                $saveintable->NameFile = $request->post('document')[$file][1];
-                                $saveintable->Position = $data['Position'];
+                            if ($request->post('document')[$file][0] == $data['position'] && $data['titel'] != $request->post('document')[$file][2]) {
+                                $saveintable = Savefiles::findOne($data["id"]);
+                                $saveintable->titel = $request->post('document')[$file][2];
+                                $saveintable->updated_at = new \yii\db\Expression('NOW()');
                                 if ($saveintable->validate()) {
                                     $saveintable->save();
                                 } else {
@@ -686,13 +688,16 @@ class DefaultController extends Controller
                         }
                     } else {
                         //Запись новых данных
-                        $randomString = Yii::$app->getSecurity()->generateRandomString();
-                        $position = trim($randomString, "_-");
+                        $tabel_filds = Fieldsform::findOne($request->post('document')[$file][1]);
+                        $count_upload_doc = $tabel_filds->count_upload_doc + 1;
+                        $position = $tabel_filds->fieldform . $count_upload_doc;
                         $saveintable = new Savefiles();
-                        $saveintable->Titel = $request->post('document')[$file][2];
-                        $saveintable->NameFile = $request->post('document')[$file][1];
-                        $saveintable->Position = $position;
+                        $saveintable->titel = $request->post('document')[$file][2];
+                        $saveintable->fieldsforms_id = $request->post('document')[$file][1];
+                        $saveintable->position = $position;
                         if ($saveintable->validate()) {
+                            $tabel_filds->count_upload_doc = $count_upload_doc;
+                            $tabel_filds->save();
                             $saveintable->save();
                         } else {
                             $p = 1;
@@ -703,19 +708,19 @@ class DefaultController extends Controller
                 if ($p == 1) {
                     //Проверка, что  запись старая
                     if ($request->post('document')[$file][0] != '0') {
-                        $saveintable = Savefiles::findOne(['Position' => $request->post('document')[$file][0]]);
+                        $saveintable = Savefiles::findOne(['position' => $request->post('document')[$file][0]]);
                         $wrong[] = [
-                            'Titel' => $request->post('document')[$file][2],
-                            'NameFile' => $request->post('document')[$file][1],
-                            'Position' => $request->post('document')[$file][0],
-                            'Link' => $saveintable->Link
+                            'titel' => $request->post('document')[$file][2],
+                            'fieldsforms_id' => $request->post('document')[$file][1],
+                            'position' => $request->post('document')[$file][0],
+                            'link' => $saveintable->link
                         ];
                     } else {
                         $wrong[] = [
-                            'Titel' => $request->post('document')[$file][2],
-                            'NameFile' => $request->post('document')[$file][1],
-                            'Position' => '0',
-                            'Link' => ''
+                            'titel' => $request->post('document')[$file][2],
+                            'fieldsforms_id' => $request->post('document')[$file][1],
+                            'position' => '0',
+                            'link' => ''
                         ];
                     }
                     //Создание в сесси переменной wrong_data, куда передается массив wrong с ошибками
@@ -733,11 +738,11 @@ class DefaultController extends Controller
             //Если переменная wrong_data есть, сравнимаем полученные данные из таблицы 
             //и либо заменяем их, либо добавляем новые в массив data
             foreach ($wrong_data as $wr) {
-                if ($wr["Position"] != '0') {
+                if ($wr["position"] != '0') {
                     foreach ($savefilestable as $tabledata) {
-                        if ($wr["Position"] == $tabledata["Position"]) {
-                            $tabledata["Titel"] = $wr["Titel"];
-                            $position_wrong[] = $wr["Position"];
+                        if ($wr["position"] == $tabledata["position"]) {
+                            $tabledata["titel"] = $wr["titel"];
+                            $position_wrong[] = $wr["position"];
                             break;
                         }
                     }
@@ -754,13 +759,13 @@ class DefaultController extends Controller
     {
         if ($what_to_delete == 'row') {
             $delintable = new Dataforms();
-            $deldata = $delintable::findOne(['iddataforms' => $post]);
+            $deldata = $delintable::findOne(['id' => $post]);
             $deldata->delete();
             $delintable = new Dataforms();
-            $deldata = $delintable::findOne(['iddataforms' => $post + 1]);
+            $deldata = $delintable::findOne(['id' => $post + 1]);
             $deldata->delete();
             $delintable = new Dataforms();
-            $deldata = $delintable::findOne(['iddataforms' => $post + 2]);
+            $deldata = $delintable::findOne(['id' => $post + 2]);
             $deldata->delete();
         }
         if ($what_to_delete == 'email') {
@@ -785,9 +790,9 @@ class DefaultController extends Controller
     public function actionDeleteform4($post)
     {
         $saveintable = new Dataforms();
-        $deldata = $saveintable::findOne(['iddataforms' => $post]);
+        $deldata = $saveintable::findOne(['id' => $post]);
         $deldata->delete();
-        $deldata = $saveintable::findOne(['iddataforms' => $post + 1]);
+        $deldata = $saveintable::findOne(['id' => $post + 1]);
         $deldata->delete();
         return $this->redirect('form4');
     }
@@ -795,42 +800,42 @@ class DefaultController extends Controller
     {
         $request = Yii::$app->request;
         $table = new Dataforms();
-        $delintable = $table::find()->where(['or', 'variable=1', 'variable=2', 'variable=3', 'variable=4'])->all();
+        $delintable = $table::find()->where(['or', 'fieldsforms_id=1', 'fieldsforms_id=2', 'fieldsforms_id=3', 'fieldsforms_id=4'])->all();
         if ($request->post('paid_educational')) {
             $post_paid_educational = [];
             foreach ($request->post('paid_educational') as $postdata) {
                 $post_paid_educational[] = $postdata[0];
             }
             foreach ($delintable as $deldata) {
-                if (in_array($deldata['iddataforms'], $post_paid_educational)) {
+                if (in_array($deldata['id'], $post_paid_educational)) {
                 } else {
-                    $del = $table::findOne($deldata['iddataforms']);
+                    $del = $table::findOne($deldata['id']);
                     $del->delete();
                 }
             }
         } else {
-            $delintable = $table::deleteAll(['or', 'variable=1', 'variable=2', 'variable=3', 'variable=4']);
+            $delintable = $table::deleteAll(['or', 'fieldsforms_id=1', 'fieldsforms_id=2', 'fieldsforms_id=3', 'fieldsforms_id=4']);
         }
     }
     public function actionDeletegrants()
     {
         $request = Yii::$app->request;
         $table = new Dataforms();
-        $delintable = $table::find()->where(['or', 'variable=5', 'variable=6', 'variable=7', 'variable=8', 'variable=9', 'variable=10'])->all();
+        $delintable = $table::find()->where(['or', 'fieldsforms_id=5', 'fieldsforms_id=6', 'fieldsforms_id=7', 'fieldsforms_id=8', 'fieldsforms_id=9', 'fieldsforms_id=10'])->all();
         if ($request->post('paid_educational')) {
             $post_paid_educational = [];
             foreach ($request->post('paid_educational') as $postdata) {
                 $post_paid_educational[] = $postdata[0];
             }
             foreach ($delintable as $deldata) {
-                if (in_array($deldata['iddataforms'], $post_paid_educational)) {
+                if (in_array($deldata['id'], $post_paid_educational)) {
                 } else {
-                    $del = $table::findOne($deldata['iddataforms']);
+                    $del = $table::findOne($deldata['id']);
                     $del->delete();
                 }
             }
         } else {
-            $delintable = $table::deleteAll(['or', 'variable=5', 'variable=6', 'variable=7', 'variable=8', 'variable=9', 'variable=10']);
+            $delintable = $table::deleteAll(['or', 'fieldsforms_id=5', 'fieldsforms_id=6', 'fieldsforms_id=7', 'fieldsforms_id=8', 'fieldsforms_id=9', 'fieldsforms_id=10']);
         }
     }
     public function actionDeletedocument()
@@ -838,65 +843,85 @@ class DefaultController extends Controller
         $request = Yii::$app->request;
         $table = new Savefiles();
         if ($request->post('document')) {
+            //создаем массив id из POST
             foreach ($request->post('document') as $postdata) {
                 $post_document[] = $postdata[0];
             }
             $delintable = $table::find()->all();
             foreach ($delintable as $deldata) {
-                if (in_array($deldata['Position'], $post_document)) {
+                if (in_array($deldata['position'], $post_document)) {
                 } else {
-                    $link = $table::findOne(['Position' => $deldata['Position']]);
-                    if ($link['Link'] == '') {
-                        $deldata = $table::findOne(['Position' => $deldata['Position']]);
-                        $deldata->delete();
+                    //Если enabled не существует то мы его удаляем, а если нет, скрываем элемент
+                    if (!$request->post('enabled')) {
+                        $link = $table::findOne(['position' => $deldata['position']]);
+                        //Если ссылка пустая, то удаляем только из таблицы, если нет, то удаляем еще и файл
+                        if ($link['link'] == '') {
+                            $deldata = $table::findOne(['position' => $deldata['position']]);
+                            $deldata->delete();
+                        } else {
+                            if (!$request->post('enabled')) {
+                                $key = Yii::$app->params['key'];
+                                $secret = Yii::$app->params['secret'];
+                                $endpoint = Yii::$app->params['endpoint'];
+                                $bucket = Yii::$app->params['Bucket'];
+                                $s3 = new S3Client([
+                                    'version' => 'latest',
+                                    'region' => 'msk',
+                                    'use_path_style_endpoint' => true,
+                                    'credentials' => [
+                                        'key' => $key,
+                                        'secret' => $secret,
+                                    ],
+                                    'endpoint' => $endpoint,
+                                ]);
+                                $s3->deleteObject([
+                                    'Bucket' => $bucket,
+                                    'Key' => $deldata['position'],
+                                ]);
+                                $deldata = $table::findOne(['position' => $deldata['position']]);
+                                $deldata->delete();
+                            } else {
+                                $deldata = $table::findOne(['position' => $deldata['position']]);
+                                $deldata->enabled = 0;
+                                $deldata->save();
+                            }
+                        }
                     } else {
-                        $key = Yii::$app->params['key'];
-                        $secret = Yii::$app->params['secret'];
-                        $endpoint = Yii::$app->params['endpoint'];
-                        $bucket = Yii::$app->params['Bucket'];
-                        $s3 = new S3Client([
-                            'version' => 'latest',
-                            'region' => 'msk',
-                            'use_path_style_endpoint' => true,
-                            'credentials' => [
-                                'key' => $key,
-                                'secret' => $secret,
-                            ],
-                            'endpoint' => $endpoint,
-                        ]);
-                        $s3->deleteObject([
-                            'Bucket' => $bucket,
-                            'Key' => $deldata['Position'],
-                        ]);
-                        $deldata = $table::findOne(['Position' => $deldata['Position']]);
-                        $deldata->delete();
+                        $deldata = $table::findOne(['position' => $deldata['position']]);
+                        $deldata->enabled = 0;
+                        $deldata->save();
                     }
                 }
             }
         } else {
             $table = $table::find()->one();
-            if ($table['Link'] == '') {
-                $table->delete();
+            if (!$request->post('enabled')) {
+                if ($table['link'] == '') {
+                    $table->delete();
+                } else {
+                    $key = Yii::$app->params['key'];
+                    $secret = Yii::$app->params['secret'];
+                    $endpoint = Yii::$app->params['endpoint'];
+                    $bucket = Yii::$app->params['Bucket'];
+                    $s3 = new S3Client([
+                        'version' => 'latest',
+                        'region' => 'msk',
+                        'use_path_style_endpoint' => true,
+                        'credentials' => [
+                            'key' => $key,
+                            'secret' => $secret,
+                        ],
+                        'endpoint' => $endpoint,
+                    ]);
+                    $s3->deleteObject([
+                        'Bucket' => $bucket,
+                        'Key' => $table['position'],
+                    ]);
+                    $table->delete();
+                }
             } else {
-                $key = Yii::$app->params['key'];
-                $secret = Yii::$app->params['secret'];
-                $endpoint = Yii::$app->params['endpoint'];
-                $bucket = Yii::$app->params['Bucket'];
-                $s3 = new S3Client([
-                    'version' => 'latest',
-                    'region' => 'msk',
-                    'use_path_style_endpoint' => true,
-                    'credentials' => [
-                        'key' => $key,
-                        'secret' => $secret,
-                    ],
-                    'endpoint' => $endpoint,
-                ]);
-                $s3->deleteObject([
-                    'Bucket' => $bucket,
-                    'Key' => $table['Position'],
-                ]);
-                $table->delete();
+                $table->enabled = 0;
+                $table->save();
             }
         }
     }
