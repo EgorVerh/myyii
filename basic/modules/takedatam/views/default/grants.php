@@ -24,7 +24,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
         <?php $count_row = 0;
         if (isset($data)) {
             foreach ($data as $number => $name) {
-                if ($name['variable'] == 5) { ?>
+                if ($name['fieldsforms_id'] == 5) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
                             value="<?php echo $name['iddataforms'] ?>">
@@ -47,7 +47,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
             <h4>Приказ образовательной организации о
                 создании стипендиальной комиссии</h4>
             <?php foreach ($data as $number => $name) {
-                if ($name['variable'] == 6) { ?>
+                if ($name['fieldsforms_id'] == 6) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
                             value="<?php echo $name['iddataforms'] ?>">
@@ -70,7 +70,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
             <h4>Положение о стипендиальной комиссии
                 образовательной организации</h4>
             <?php foreach ($data as $number => $name) {
-                if ($name['variable'] == 7) { ?>
+                if ($name['fieldsforms_id'] == 7) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
                             value="<?php echo $name['iddataforms'] ?>">
@@ -94,7 +94,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
                 обеспечении и других формах материальной поддержки студентов, аспирантов и докторантов образовательной
                 организации</h4>
             <?php foreach ($data as $number => $name) {
-                if ($name['variable'] == 8) { ?>
+                if ($name['fieldsforms_id'] == 8) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
                             value="<?php echo $name['iddataforms'] ?>">
@@ -117,7 +117,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
             <h4>Положение о формах материальной
                 поддержки студентов, аспирантов и докторантов образовательной организации</h4>
             <?php foreach ($data as $number => $name) {
-                if ($name['variable'] == 9) { ?>
+                if ($name['fieldsforms_id'] == 9) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
                             value="<?php echo $name['iddataforms'] ?>">
@@ -140,7 +140,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css');
             <h4>Ссылка на информацию о формировании
                 платы за проживание в общежитии</h4>
             <?php foreach ($data as $number => $name) {
-                if ($name['variable'] == 10) { ?>
+                if ($name['fieldsforms_id'] == 10) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
                             value="<?php echo $name['iddataforms'] ?>">

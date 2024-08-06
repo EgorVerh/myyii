@@ -25,7 +25,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
         <?php $count_row = 0;
         if (isset($data)) {
             foreach ($data as $number => $name) {
-                if ($name['variable'] == 1) { ?>
+                if ($name['fieldsforms_id'] == 1) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
                             value="<?php echo $name['iddataforms'] ?>">
@@ -50,7 +50,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
             <h4 style="padding-bottom:20px;padding-top:20px;">Документ об утверждении стоимости обучения по каждой
                 образовательной программе</h4>
             <?php foreach ($data as $number => $name) {
-                if ($name['variable'] == 2) { ?>
+                if ($name['fieldsforms_id'] == 2) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
                             value="<?php echo $name['iddataforms'] ?>">
@@ -74,7 +74,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                     Добавить</button></div>
             <h4 style="padding-bottom:20px;padding-top:20px;">Документ о порядке оказания платных образовательных услуг</h4>
             <?php foreach ($data as $number => $name) {
-                if ($name['variable'] == 3) { ?>
+                if ($name['fieldsforms_id'] == 3) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
                             value="<?php echo $name['iddataforms'] ?>">
@@ -106,7 +106,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                 образовательной организации, реализующей образовательные программы начального общего, основного
                 общего или среднего общего образования</h4>
             <?php foreach ($data as $number => $name) {
-                if ($name['variable'] == 4) { ?>
+                if ($name['fieldsforms_id'] == 4) { ?>
                     <div class="row oform_row" value="<?php echo $number ?>">
                         <input type="hidden" name="paid_educational[<?php echo $count_row ?>][]"
                             value="<?php echo $name['iddataforms'] ?>">
