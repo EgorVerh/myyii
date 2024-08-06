@@ -23,6 +23,6 @@ class m240805_135617_fieldsforms extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('{{%fildsforms}}');
+        $this->dropTable('{{%fieldsforms}}');
     }
 }
