@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "form2addres".
  *
- * @property int $idform2addres
+ * @property int $id
  * @property string|null $addres
  * @property int|null $iddataforms
  *
@@ -29,7 +29,7 @@ class Form2addres extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['iddataforms'], 'integer'],
+            [['id'], 'integer'],
             [['addres'], 'string', 'max' => 255],
             [['iddataforms'], 'exist', 'skipOnError' => true, 'targetClass' => Dataforms::class, 'targetAttribute' => ['iddataforms' => 'iddataforms']],
         ];
@@ -41,7 +41,7 @@ class Form2addres extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idform2addres' => 'Idform2addres',
+            'id' => 'Idform2addres',
             'addres' => 'Addres',
             'iddataforms' => 'Iddataforms',
         ];

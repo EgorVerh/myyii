@@ -8,12 +8,15 @@ use Yii;
  * This is the model class for table "dataforms".
  *
  * @property int $id
- * @property string $namefieldsforms
- * @property string|null $datafields
+ * @property string $titel
+ * @property string|null $link
  * @property int $fieldsforms_id
- * 
- * @property Form2addres[] $form2addresdatafilds
- * @property Form2email[] $form2emails
+ * @property int $enabled
+ * @property string $position
+ * @property string $created_at
+ * @property string|null $updated_at
+ *
+ * @property Fieldsforms[] $fieldsforms
  */
 class Dataforms extends \yii\db\ActiveRecord
 {
@@ -31,11 +34,12 @@ class Dataforms extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['namefieldsforms'],'required'],
-            [['fieldsforms_id'], 'required'],
-            [['fieldsforms_id'], 'number'],
-            [['datafields'],'required'],
-            [['datafields'],'url','message'=>'Это не ссылка'],
+            [['titel', 'fieldsforms_id', 'position'], 'required'],
+            [['titel', 'position'], 'string'],
+            [['fieldsforms_id', 'enabled'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
+            ['link','url'],
+            [['fieldsforms_id'], 'exist', 'skipOnError' => true, 'targetClass' => Fieldsforms::class, 'targetAttribute' => ['fieldsforms_id' => 'id']],
         ];
     }
 
@@ -45,30 +49,24 @@ class Dataforms extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'id',
-            'namefieldsforms' => 'namefieldsforms',
-            'datafields' => 'Datafilds',
-            'fieldsforms_id' => 'fieldsforms_id',
+            'id' => 'ID',
+            'titel' => 'Titel',
+            'link' => 'Link',
+            'fieldsforms_id' => 'Fieldsforms ID',
+            'enabled' => 'Enabled',
+            'position' => 'Position',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 
     /**
-     * Gets query for [[Form2addres]].
+     * Gets query for [[Fieldsforms]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getForm2addres()
+    public function getFieldsforms()
     {
-        return $this->hasMany(Form2addres::class, ['id' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Form2emails]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getForm2emails()
-    {
-        return $this->hasMany(Form2email::class, ['id' => 'id']);
+        return $this->hasOne(Fieldsforms::class, ['id' => 'fieldsforms_id']);
     }
 }

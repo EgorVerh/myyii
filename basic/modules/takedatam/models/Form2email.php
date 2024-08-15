@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "form2email".
  *
- * @property int $idform2email
+ * @property int $id
  * @property string|null $email
  * @property int|null $iddataforms
  *
@@ -41,7 +41,7 @@ class Form2email extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idform2email' => 'Idform2email',
+            'id' => 'Idform2email',
             'email' => 'Email',
             'iddataforms' => 'Iddataforms',
         ];
