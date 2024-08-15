@@ -21,7 +21,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
         <h4>Копия устава образовательной организации</h4>
         <?php if (isset($tabledata)) {
             foreach ($tabledata as $table) {
-                if ($table["idfieldsforms"] == 11 && $table["enabled"] == 1) { ?>
+                if ($table["fieldsforms_id"] == 11 && $table["enabled"] == 1) { ?>
                     <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                         <input type="hidden" name="document[<?php echo $count_row ?>][]" value="<?php echo $table["position"] ?>">
                         <input type="hidden" name="document[<?php echo $count_row ?>][]" value=11>
@@ -83,7 +83,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                     <h4>Копия свидетельства о государственной аккредитации (с приложениями)</h4>
                 </div>
                 <?php foreach ($tabledata as $table) {
-                    if ($table["idfieldsforms"] == 12 && $table["enabled"] == 1) { ?>
+                    if ($table["fieldsforms_id"] == 12 && $table["enabled"] == 1) { ?>
                         <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                             <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                 value="<?php echo $table["position"] ?>">
@@ -145,7 +145,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                             Добавить</button></div>
                     <h4>Копия локального нормативного акта, регламентирующего правила приема обучающихся</h4>
                     <?php foreach ($tabledata as $table) {
-                        if ($table["idfieldsforms"] == 13 && $table["enabled"] == 1) { ?>
+                        if ($table["fieldsforms_id"] == 13 && $table["enabled"] == 1) { ?>
                             <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                 <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                     value="<?php echo $table["position"] ?>">
@@ -210,7 +210,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                 Добавить</button></div>
                         <h4>Копия локального нормативного акта, регламентирующего режим занятий обучающихся</h4>
                         <?php foreach ($tabledata as $table) {
-                            if ($table["idfieldsforms"] == 14 && $table["enabled"] == 1) { ?>
+                            if ($table["fieldsforms_id"] == 14 && $table["enabled"] == 1) { ?>
                                 <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                     <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                         value="<?php echo $table["position"] ?>">
@@ -277,7 +277,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                 текущего контроля
                                 успеваемости и промежуточной аттестации обучающихся</h4>
                             <?php foreach ($tabledata as $table) {
-                                if ($table["idfieldsforms"] == 15 && $table["enabled"] == 1) { ?>
+                                if ($table["fieldsforms_id"] == 15 && $table["enabled"] == 1) { ?>
                                     <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                         <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                             value="<?php echo $table["position"] ?>">
@@ -344,7 +344,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                     отчисления и
                                     восстановления обучающихся</h4>
                                 <?php foreach ($tabledata as $table) {
-                                    if ($table["idfieldsforms"] == 16 && $table["enabled"] == 1) { ?>
+                                    if ($table["fieldsforms_id"] == 16 && $table["enabled"] == 1) { ?>
                                         <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                             <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                                 value="<?php echo $table["position"] ?>">
@@ -414,7 +414,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                         родителями (законными
                                         представителями) несовершеннолетних обучающихся</h4>
                                     <?php foreach ($tabledata as $table) {
-                                        if ($table["idfieldsforms"] == 17 && $table["enabled"] == 1) { ?>
+                                        if ($table["fieldsforms_id"] == 17 && $table["enabled"] == 1) { ?>
                                             <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                                 <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                                     value="<?php echo $table["position"] ?>">
@@ -484,7 +484,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                 class="btn btn-success" value=17>+ Добавить</button></div>
                                         <h4>Копия правил внутреннего распорядка обучающихся</h4>
                                         <?php foreach ($tabledata as $table) {
-                                            if ($table["idfieldsforms"] == 18 && $table["enabled"] == 1) { ?>
+                                            if ($table["fieldsforms_id"] == 18 && $table["enabled"] == 1) { ?>
                                                 <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                                     <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                                         value="<?php echo $table["position"] ?>">
@@ -556,7 +556,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                     Добавить</button></div>
                                             <h4>Копия правил внутреннего трудового распорядка</h4>
                                             <?php foreach ($tabledata as $table) {
-                                                if ($table["idfieldsforms"] == 19 && $table["enabled"] == 1) { ?>
+                                                if ($table["fieldsforms_id"] == 19 && $table["enabled"] == 1) { ?>
                                                     <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                                         <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                                             value="<?php echo $table["position"] ?>">
@@ -628,7 +628,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                         class="btn btn-success" value=19>+ Добавить</button></div>
                                                 <h4>Копия коллективного договора</h4>
                                                 <?php foreach ($tabledata as $table) {
-                                                    if ($table["idfieldsforms"] == 20 && $table["enabled"] == 1) { ?>
+                                                    if ($table["fieldsforms_id"] == 20 && $table["enabled"] == 1) { ?>
                                                         <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                                             <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                                                 value="<?php echo $table["position"] ?>">
@@ -703,7 +703,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                             class="btn btn-success" value=20>+ Добавить</button></div>
                                                     <h4>Отчет о результатах самообследования</h4>
                                                     <?php foreach ($tabledata as $table) {
-                                                        if ($table["idfieldsforms"] == 21 && $table["enabled"] == 1) { ?>
+                                                        if ($table["fieldsforms_id"] == 21 && $table["enabled"] == 1) { ?>
                                                             <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                                                 <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                                                     value="<?php echo $table["position"] ?>">
@@ -780,7 +780,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                         <h4>Предписания органов, осуществляющих государственный контроль
                                                             (надзор) в сфере образования</h4>
                                                         <?php foreach ($tabledata as $table) {
-                                                            if ($table["idfieldsforms"] == 22 && $table["enabled"] == 1) { ?>
+                                                            if ($table["fieldsforms_id"] == 22 && $table["enabled"] == 1) { ?>
                                                                 <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                                                     <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                                                         value="<?php echo $table["position"] ?>">
@@ -862,7 +862,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                                                                 государственный контроль (надзор) в сфере
                                                                 образования</h4>
                                                             <?php foreach ($tabledata as $table) {
-                                                                if ($table["idfieldsforms"] == 23 && $table["enabled"] == 1) { ?>
+                                                                if ($table["fieldsforms_id"] == 23 && $table["enabled"] == 1) { ?>
                                                                     <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                                                         <input type="hidden"
                                                                             name="document[<?php echo $count_row ?>][]"
