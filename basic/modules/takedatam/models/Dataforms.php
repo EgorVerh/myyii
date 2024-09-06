@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace frontend\modules\takedatam\models;
 
 use Yii;
 

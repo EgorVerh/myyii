@@ -14,18 +14,18 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
 </head>
 
 <body>
-    <input type="hidden" id="whatisurl" value=4>
+    <input type="hidden" id="whatisurl" value=3>
     <h1 style="margin-bottom:20px;">Образовательные стандарты и требования</h1>
     <!--Сгенерированные сведения-->
     <form method="post" enctype="multipart/form-data">
         <?php $count_row = 0; ?>
-        <h4>Образец договора об оказании платных образовательных услуг</h4>
+        <h4>Федеральные государственные образовательные стандарты</h4>
         <?php if (isset($tabledata)) {
             foreach ($tabledata as $table) {
-                if ($table["fieldsforms_id"] == 1 && $table["enabled"] == 1) { ?>
+                if ($table["fieldsforms_id"] == 27 && $table["enabled"] == 1) { ?>
                     <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                         <input type="hidden" name="document[<?php echo $count_row ?>][]" value="<?php echo $table["position"] ?>">
-                        <input type="hidden" name="document[<?php echo $count_row ?>][]" value=1>
+                        <input type="hidden" name="document[<?php echo $count_row ?>][]" value=27>
                         <div class="col-sm-11">
                             <label for="document_purpose<?php echo $count_row ?>"> Назначение докумета</label>
                             <input class="form-control" type="text" name="document[<?php echo $count_row ?>][]"
@@ -79,16 +79,15 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                 }
             }
             ?>
-                <div class="rightbuttonposition"><button type="button" id="add_row" class="btn btn-success" value=1>+
+                <div class="rightbuttonposition"><button type="button" id="add_row" class="btn btn-success" value=27>+
                         Добавить</button></div>
-                <h4>Документ об утверждении стоимости обучения по каждой образовательной программе в виде электронного
-                    документа, подписанного электронной подписью</h4>
+                <h4>Образовательные стандарты</h4>
                 <?php foreach ($tabledata as $table) {
-                    if ($table["fieldsforms_id"] == 2 && $table["enabled"] == 1) { ?>
+                    if ($table["fieldsforms_id"] == 28 && $table["enabled"] == 1) { ?>
                         <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                             <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                 value="<?php echo $table["position"] ?>">
-                            <input type="hidden" name="document[<?php echo $count_row ?>][]" value=2>
+                            <input type="hidden" name="document[<?php echo $count_row ?>][]" value=28>
                             <div class="col-sm-11">
                                 <label for="document_purpose<?php echo $count_row ?>"> Назначение докумета</label>
                                 <input class="form-control" type="text" name="document[<?php echo $count_row ?>][]"
@@ -143,16 +142,15 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                     }
                 }
                 ?>
-                    <div class="rightbuttonposition"><button type="button" id="add_row" class="btn btn-success" value=2>+
+                    <div class="rightbuttonposition"><button type="button" id="add_row" class="btn btn-success" value=28>+
                             Добавить</button></div>
-                    <h4>Порядок оказания платных образовательных услуг в виде электронного документа, подписанного
-                        электронной подписью</h4>
+                    <h4>Федеральные государственные требования</h4>
                     <?php foreach ($tabledata as $table) {
-                        if ($table["fieldsforms_id"] == 3 && $table["enabled"] == 1) { ?>
+                        if ($table["fieldsforms_id"] == 29 && $table["enabled"] == 1) { ?>
                             <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                 <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                     value="<?php echo $table["position"] ?>">
-                                <input type="hidden" name="document[<?php echo $count_row ?>][]" value=3>
+                                <input type="hidden" name="document[<?php echo $count_row ?>][]" value=29>
                                 <div class="col-sm-11">
                                     <label for="document_purpose<?php echo $count_row ?>"> Назначение докумета</label>
                                     <input class="form-control" type="text" name="document[<?php echo $count_row ?>][]"
@@ -210,23 +208,15 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                     }
                     ?>
                         <div class="rightbuttonposition"><button type="button" id="add_row" class="btn btn-success"
-                                value=3>+
+                                value=29>+
                                 Добавить</button></div>
-                        <h4>Документ об установлении размера платы, взимаемой с родителей (законных представителей) за
-                            присмотр и уход за детьми, осваивающими образовательные программы дошкольного образования в
-                            организациях, осуществляющих образовательную деятельность, за содержание детей в образовательной
-                            организации, реализующей образовательные программы начального общего, основного общего или
-                            среднего общего образования, если в такой образовательной организации созданы условия для
-                            проживания обучающихся в интернате, либо за осуществление присмотра и ухода за детьми в группах
-                            продленного дня в образовательной организации, реализующей образовательные программы начального
-                            общего, основного общего или среднего общего образования в виде электронного документа,
-                            подписанного электронной подписью</h4>
+                        <h4>Самостоятельно устанавливаемые требования</h4>
                         <?php foreach ($tabledata as $table) {
-                            if ($table["fieldsforms_id"] == 4 && $table["enabled"] == 1) { ?>
+                            if ($table["fieldsforms_id"] == 30 && $table["enabled"] == 1) { ?>
                                 <div class="row oform_row temporarystyle" value=<?php echo $count_row ?>>
                                     <input type="hidden" name="document[<?php echo $count_row ?>][]"
                                         value="<?php echo $table["position"] ?>">
-                                    <input type="hidden" name="document[<?php echo $count_row ?>][]" value=4>
+                                    <input type="hidden" name="document[<?php echo $count_row ?>][]" value=30>
                                     <div class="col-sm-11">
                                         <label for="document_purpose<?php echo $count_row ?>"> Назначение докумета</label>
                                         <input class="form-control" type="text" name="document[<?php echo $count_row ?>][]"
@@ -286,7 +276,7 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
                         }
         } ?>
                         <div class="rightbuttonposition"><button type="button" id="add_row" class="btn btn-success"
-                                value=4>+ Добавить</button></div>
+                                value=30>+ Добавить</button></div>
                         <div class="form-group" style="margin-top:10px;">
                             <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
                         </div>

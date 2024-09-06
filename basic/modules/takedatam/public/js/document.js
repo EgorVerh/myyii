@@ -11,7 +11,10 @@ $(document).ready(function () {
                 k = Number($("#count_row").attr("value"));
                 $(document).find("#count_row").val(k - 1);
                 $(this).closest('.row').remove();
-                var data = $('form').serialize();
+                var addwhatisurl = {
+                    whatisurl: $("#whatisurl").attr("value")
+                };
+                var data = $('form').serialize() + '&' + $.param(addwhatisurl);
                 $.ajax({
                     url: '/delete_document',
                     type: 'POST',
@@ -33,7 +36,10 @@ $(document).ready(function () {
                 var addenabledval = {
                     enabled: 1
                 };
-                var data = $('form').serialize() + '&' + $.param(addenabledval);
+                var addwhatisurl = {
+                    whatisurl: $("#whatisurl").attr("value")
+                };
+                var data = $('form').serialize() + '&' + $.param(addenabledval)+ '&' + $.param(addwhatisurl);
                 $.ajax({
                     url: '/delete_document',
                     type: 'POST',
@@ -41,6 +47,9 @@ $(document).ready(function () {
                 });
             }
         }
+    });
+    $('form').on('submit',function(){
+        $('button[type="submit"]').prop('disabled', true);
     })
 })
 
