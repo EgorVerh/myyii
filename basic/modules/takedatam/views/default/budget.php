@@ -11,21 +11,6 @@ $this->registerJsFile('@modulestakedatamscript/budget.js');
 
 <head>
     <title>Финансово-хозяйственная деятельность</title>
-    <style>
-        .label_size {
-            font-size: 14px;
-        }
-
-        #delreport {
-            margin-top: 40px;
-        }
-        #add_url,
-        #add_report,
-        #add_doc {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 
 <body>

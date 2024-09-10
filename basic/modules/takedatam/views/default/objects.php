@@ -10,27 +10,6 @@ $this->registerJsFile('@modulestakedatamscript/objects.js');
 
 <head>
     <title>Финансово-хозяйственная деятельность</title>
-    <style>
-        .input_margin_top_whit_long_text {
-            margin-top: 20px;
-        }
-
-        .input_margin_top_whit_short_text {
-            margin-top: 36px;
-        }
-
-        #delreport {
-            margin-top: 65px;
-        }
-
-        #add_url,
-        #add_report,
-        #add_doc,
-        #add_row_tabel {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 
 <body>
@@ -304,4 +283,68 @@ $this->registerJsFile('@modulestakedatamscript/objects.js');
     </form>
     <input type="hidden" id="count_rows_tabels" value=<?php echo $count_rows_tabels ?>>
     <input type="hidden" id="count_url" value=<?php echo $count_url ?>>
+    <h4>Сведения об оборудованных учебных кабинетах</h4>
+    <table>
+        <thead class="table-fixed-head">
+            <tr>
+                <td>Адрес места нахождения</td>
+                <td>Наименование оборудованного учебного кабинета</td>
+                <td>Оснащенность оборудованного учебного кабинета</td>
+                <td>Приспособленность для использования инвалидами и лицами с ограниченными возможностями здоровья
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="4">
+                    <div class="content_alert alert-1c danger_oform">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                            viewBox="0 0 30 30">
+                            <path fill="#c74343" d="M0 12L2 12 2 23 4 23 4 10 0 10z"></path>
+                            <path fill="#c74343"
+                                d="M2 9L5 9 5 23 7 23 7 7 2 7zM11 15c0-3.309 2.691-6 6-6s6 2.691 6 6h2c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8h13v-2H17C13.691 21 11 18.309 11 15z">
+                            </path>
+                            <path fill="#c74343"
+                                d="M17,17c-1.103,0-2-0.897-2-2s0.897-2,2-2s2,0.897,2,2h2c0-2.206-1.794-4-4-4s-4,1.794-4,4 s1.794,4,4,4h13v-2H17z">
+                            </path>
+                        </svg>
+                        <p>ВНИМАИЕ !</p>
+                        <p>Поля для этой таблицы выгружаются из 1C</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>Сведения об объектах для проведения практических занятий</h4>
+    <table>
+        <thead class="table-fixed-head">
+            <tr>
+                <td>Адрес места нахождения</td>
+                <td>Наименование оборудованного учебного кабинета</td>
+                <td>Оснащенность оборудованного учебного кабинета</td>
+                <td>Приспособленность для использования инвалидами и лицами с ограниченными возможностями здоровья
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="4">
+                    <div class="content_alert alert-1c danger_oform">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                            viewBox="0 0 30 30">
+                            <path fill="#c74343" d="M0 12L2 12 2 23 4 23 4 10 0 10z"></path>
+                            <path fill="#c74343"
+                                d="M2 9L5 9 5 23 7 23 7 7 2 7zM11 15c0-3.309 2.691-6 6-6s6 2.691 6 6h2c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8h13v-2H17C13.691 21 11 18.309 11 15z">
+                            </path>
+                            <path fill="#c74343"
+                                d="M17,17c-1.103,0-2-0.897-2-2s0.897-2,2-2s2,0.897,2,2h2c0-2.206-1.794-4-4-4s-4,1.794-4,4 s1.794,4,4,4h13v-2H17z">
+                            </path>
+                        </svg>
+                        <p>ВНИМАИЕ !</p>
+                        <p>Поля для этой таблицы выгружаются из 1C</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </body>

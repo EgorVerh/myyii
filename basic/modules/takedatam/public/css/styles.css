@@ -10,7 +10,7 @@ input:focus:invalid {
 
 .wrong_file {
     border: 3px solid red !important;
-    background-color: rgb(238, 217, 217)!important;
+    background-color: rgb(238, 217, 217) !important;
     padding: 2px 2px 2px 5px !important;
 }
 
@@ -22,7 +22,11 @@ input:invalid {
     box-shadow: 0 0 5px 1px red;
 }
 
-#add_row {
+#add_row,
+#add_url,
+#add_report,
+#add_doc,
+#add_row_tabel {
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -44,7 +48,8 @@ h4 {
     margin-bottom: 5%;
     margin-left: 20px;
 }
-.hidebutton{
+
+.hidebutton {
     background-color: #f5f5f5;
     padding: 0px 0px 0px 3.5px !important;
     outline: none !important;
@@ -191,4 +196,84 @@ h4 {
 .label_oform {
     margin-bottom: 30px;
     padding-left: 15px;
+}
+
+/* common */
+.alert-1c {
+    color: #858514;
+    background-color: #ffff00;
+    border-color: #c0c02f;
+}
+
+table {
+    width: 100% !important;
+    margin-top: 15px !important;
+    font-size: 8pt !important;
+    border: 1px solid black !important;
+}
+
+.table-fixed-head {
+    top: -2px;
+    background: lightgray;
+}
+
+.label_text {
+    margin-top: 8px;
+}
+
+.label_other {
+    margin-top: 4px;
+}
+
+.button_margin_common {
+    margin: 25px 0 10px 0;
+}
+
+.input_margin_extra {
+    margin-top: 4px;
+}
+
+.input_margin_extra_phone {
+    margin-top: 8px;
+}
+
+.rightbuttonposition_text {
+    text-align: right;
+}
+
+td,
+tr {
+    border: 1px solid black !important;
+    text-align: center;
+}
+
+.danger_oform {
+    text-align: center;
+    font-size: 10pt;
+}
+
+.content_alert {
+    padding: 3px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.margin_for_code {
+    margin-top: 84px;
+}
+
+.input_margin_top_whit_long_text {
+    margin-top: 20px;
+}
+
+.input_margin_top_whit_short_text {
+    margin-top: 36px;
+}
+
+.label_size {
+    font-size: 14px;
+}
+
+#delreport {
+    margin-top: 40px;
 }

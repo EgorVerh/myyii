@@ -11,48 +11,6 @@ $this->registerJsFile('@modulestakedatamscript/document.js');
 
 <head>
     <title>Основные сведения</title>
-    <style>
-        h4 {
-            font-size: medium;
-        }
-
-        .label_text {
-            margin-top: 8px;
-        }
-
-        .label_other {
-            margin-top: 4px;
-        }
-
-        .button_margin_common {
-            margin: 25px 0 10px 0;
-        }
-
-        .input_margin_extra {
-            margin-top: 4px;
-        }
-
-        .input_margin_extra_phone {
-            margin-top: 8px;
-        }
-
-        .rightbuttonposition_text {
-            text-align: right;
-        }
-
-        #add_row {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        td,
-        tr,
-        table {
-            border: 1px solid black;
-            font-size: medium;
-            padding: 20px;
-        }
-    </style>
 </head>
 
 <body>
@@ -65,7 +23,7 @@ $this->registerJsFile('@modulestakedatamscript/document.js');
                     Полное наименование образовательной организации
                 </td>
                 <td rowspan="9">
-                    <div class="alert alert-danger" style="text-align: center;">
+                    <div class="content_alert alert-danger danger_oform">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
                             class="bi bi-exclamation-triangle" viewBox="0 0 20 20">
                             <path
@@ -74,7 +32,7 @@ $this->registerJsFile('@modulestakedatamscript/document.js');
                                 d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
                         </svg>
                         <p>ВНИМАИЕ !</p>
-                        <p>Поля для этой таблицы заполняются не здесь</p>
+                        <p>Поля для этой таблицы внесены в шаблон</p>
                     </div>
                 </td>
             </tr>
@@ -366,4 +324,171 @@ $this->registerJsFile('@modulestakedatamscript/document.js');
                 <?php echo Html::hiddenInput(\Yii::$app->getRequest()->csrfParam, \Yii::$app->getRequest()->getCsrfToken(), []) ?>
     </form>
     <input type="hidden" id="count_row" value=<?php echo $count_row ?>>
+    <h4>Места осуществления образовательной деятельности при использовании сетевой формы реализации образовательных
+        программ</h4>
+    <table>
+        <thead class="table-fixed-head">
+            <tr>
+                <td>№ <nobr>п/п</nobr>
+                </td>
+                <td>Адрес места осуществления образовательной деятельности</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr itemprop="addressPlaceSet">
+                <td colspan="2">
+                    <div class="content_alert alert-danger danger_oform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-exclamation-triangle" viewBox="0 0 20 20">
+                            <path
+                                d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z" />
+                            <path
+                                d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                        </svg>
+                        <p>ВНИМАИЕ !</p>
+                        <p>Поля для этой таблицы внесены в шаблон</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>Места проведения практики</h4>
+    <table>
+        <thead class="table-fixed-head">
+            <tr>
+                <td>№ <nobr>п/п</nobr>
+                </td>
+                <td>Адрес места осуществления образовательной деятельности</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr itemprop="addressPlaceSet">
+                <td colspan="2">
+                    <div class="content_alert alert-1c danger_oform">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                            viewBox="0 0 30 30">
+                            <path fill="#c74343" d="M0 12L2 12 2 23 4 23 4 10 0 10z"></path>
+                            <path fill="#c74343"
+                                d="M2 9L5 9 5 23 7 23 7 7 2 7zM11 15c0-3.309 2.691-6 6-6s6 2.691 6 6h2c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8h13v-2H17C13.691 21 11 18.309 11 15z">
+                            </path>
+                            <path fill="#c74343"
+                                d="M17,17c-1.103,0-2-0.897-2-2s0.897-2,2-2s2,0.897,2,2h2c0-2.206-1.794-4-4-4s-4,1.794-4,4 s1.794,4,4,4h13v-2H17z">
+                            </path>
+                        </svg>
+
+                        <p>ВНИМАИЕ !</p>
+                        <p>Поля для этой таблицы выгружаются из 1C</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>Места проведения практической подготовки обучающихся</h4>
+    <table>
+        <thead class="table-fixed-head">
+            <tr>
+                <td>№ <nobr>п/п</nobr>
+                </td>
+                <td>Адрес места осуществления образовательной деятельности</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr itemprop="addressPlaceSet">
+                <td colspan="2">
+                    <div class="content_alert alert-danger danger_oform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-exclamation-triangle" viewBox="0 0 20 20">
+                            <path
+                                d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z" />
+                            <path
+                                d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                        </svg>
+                        <p>ВНИМАИЕ !</p>
+                        <p>Поля для этой таблицы внесены в шаблон</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>Места проведения государственной итоговой аттестации</h4>
+    <table>
+        <thead class="table-fixed-head">
+            <tr>
+                <td>№ <nobr>п/п</nobr>
+                </td>
+                <td>Адрес места осуществления образовательной деятельности</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr itemprop="addressPlaceSet">
+                <td colspan="2">
+                    <div class="content_alert alert-danger danger_oform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-exclamation-triangle" viewBox="0 0 20 20">
+                            <path
+                                d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z" />
+                            <path
+                                d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                        </svg>
+                        <p>ВНИМАИЕ !</p>
+                        <p>Поля для этой таблицы внесены в шаблон</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>Места осуществления образовательной деятельности по дополнительным образовательным программам</h4>
+    <table>
+        <thead class="table-fixed-head">
+            <tr>
+                <td>№ <nobr>п/п</nobr>
+                </td>
+                <td>Адрес места осуществления образовательной деятельности</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr itemprop="addressPlaceSet">
+                <td colspan="2">
+                    <div class="content_alert alert-danger danger_oform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-exclamation-triangle" viewBox="0 0 20 20">
+                            <path
+                                d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z" />
+                            <path
+                                d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                        </svg>
+                        <p>ВНИМАИЕ !</p>
+                        <p>Поля для этой таблицы внесены в шаблон</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>Места осуществления образовательной деятельности по основным программам профессионального обучения</h4>
+    <table>
+        <thead class="table-fixed-head">
+            <tr>
+                <td>№ <nobr>п/п</nobr>
+                </td>
+                <td>Адрес места осуществления образовательной деятельности</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr itemprop="addressPlaceSet">
+                <td colspan="2">
+                    <div class="content_alert alert-danger danger_oform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-exclamation-triangle" viewBox="0 0 20 20">
+                            <path
+                                d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z" />
+                            <path
+                                d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                        </svg>
+                        <p>ВНИМАИЕ !</p>
+                        <p>Поля для этой таблицы внесены в шаблон</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </body>

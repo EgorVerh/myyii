@@ -10,27 +10,6 @@ $this->registerJsFile('@modulestakedatamscript/objects.js');
 
 <head>
     <title>Организация питания в образовательной деятельности</title>
-    <style>
-        .input_margin_top_whit_long_text {
-            margin-top: 20px;
-        }
-
-        .input_margin_top_whit_short_text {
-            margin-top: 36px;
-        }
-
-        #delreport {
-            margin-top: 65px;
-        }
-
-        #add_url,
-        #add_report,
-        #add_doc,
-        #add_row_tabel {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 <body>
     <h1 style="margin-bottom:20px;">Организация питания в образовательной деятельности</h1>
