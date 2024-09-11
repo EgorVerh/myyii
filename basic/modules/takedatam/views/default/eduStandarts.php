@@ -2,7 +2,6 @@
 use yii\helpers\Html;
 /** @var yii\web\View $this */
 use frontend\modules\takedatam\assets\AppAsset;
-
 AppAsset::register($this);
 $this->registerJsFile('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 $this->registerJsFile('@modulestakedatamscript/document.js');
@@ -14,8 +13,9 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
 </head>
 
 <body>
+    <?= $this->params["MenuSectionsWidget"] ?>
     <input type="hidden" id="whatisurl" value=3>
-    <h1 style="margin-bottom:20px;">Образовательные стандарты и требования</h1>
+    <h1>Образовательные стандарты и требования</h1>
     <!--Сгенерированные сведения-->
     <form method="post" enctype="multipart/form-data">
         <?php $count_row = 0; ?>

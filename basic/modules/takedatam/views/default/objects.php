@@ -13,8 +13,9 @@ $this->registerJsFile('@modulestakedatamscript/objects.js');
 </head>
 
 <body>
+    <?= $this->params["MenuSectionsWidget"] ?>
     <input type="hidden" id="whatisurl" value=6>
-    <h1 style="margin-bottom:20px;">Финансово-хозяйственная деятельность</h1>
+    <h1>Финансово-хозяйственная деятельность</h1>
     <form method="post" enctype="multipart/form-data">
         <?php
         $count_rows_tabels = 0;

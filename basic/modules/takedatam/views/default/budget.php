@@ -2,7 +2,6 @@
 use yii\helpers\Html;
 /** @var yii\web\View $this */
 use frontend\modules\takedatam\assets\AppAsset;
-
 AppAsset::register($this);
 $this->registerJsFile('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 $this->registerCssFile('@modulestakedatamcss/styles.css');
@@ -14,8 +13,9 @@ $this->registerJsFile('@modulestakedatamscript/budget.js');
 </head>
 
 <body>
+    <?= $this->params["MenuSectionsWidget"] ?>
     <input type="hidden" id="whatisurl" value=6>
-    <h1 style="margin-bottom:20px;">Финансово-хозяйственная деятельность</h1>
+    <h1>Финансово-хозяйственная деятельность</h1>
     <form method="post" enctype="multipart/form-data">
         <?php
         $count_report = 0;

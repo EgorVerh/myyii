@@ -26,7 +26,8 @@ input:invalid {
 #add_url,
 #add_report,
 #add_doc,
-#add_row_tabel {
+#add_row_tabel,
+#add_dop {
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -41,6 +42,10 @@ input:invalid {
 h4 {
     margin-top: 10px !important;
     padding-top: 10px !important;
+}
+
+h1 {
+    margin: 10px 0 10px 0 !important;
 }
 
 .delbutton {
@@ -276,4 +281,55 @@ tr {
 
 #delreport {
     margin-top: 40px;
+}
+
+/* Выпадающее меню */
+.dropdown {
+    margin-top: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.dropdown-button {
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-button {
+    background-color: #D3D3D3;
+}
+/* Inter style */
+.rightbuttonposition_text {
+    text-align: right;
+}
+.margin_for_dop {
+    margin-bottom: 5px !important;
 }

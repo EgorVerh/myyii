@@ -14,6 +14,7 @@ use frontend\modules\takedatam\models\Savefiles;
 use frontend\modules\takedatam\models\UploadForm;
 use frontend\modules\takedatam\models\Fieldsforms;
 use frontend\modules\takedatam\models\ExtraFields;
+use frontend\modules\takedatam\widgets\MenuSectionsWidget;
 use yii\web\UploadedFile;
 use frontend\models\StorageUploadForm;
 use common\models\storage\Upload;
@@ -30,6 +31,7 @@ class DefaultController extends Controller
     public function init()
     {
         parent::init();
+        $this->view->params['MenuSectionsWidget'] = MenuSectionsWidget::widget();
     }
 
     public function beforeAction($action)

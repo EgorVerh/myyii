@@ -2,7 +2,6 @@
 use yii\helpers\Html;
 /** @var yii\web\View $this */
 use frontend\modules\takedatam\assets\AppAsset;
-
 AppAsset::register($this);
 $this->registerJsFile('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 $this->registerCssFile('@modulestakedatamcss/styles.css');
@@ -11,23 +10,11 @@ $this->registerJsFile('@modulestakedatamscript/inter.js');
 
 <head>
     <title>Образовательные стандарты и требования</title>
-    <style>
-        .rightbuttonposition_text {
-            text-align: right;
-        }
-
-        #add_dop {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .margin_for_dop {
-            margin-bottom: 5px;
-        }
-    </style>
 </head>
 
 <body>
+    <?= $this->params["MenuSectionsWidget"] ?>
+    <h1>Образовательные стандарты и требования</h1>
     <form method="post">
         <?php $count_row = 0; ?>
         <h4>Информация о заключенных и планируемых к заключению договорах с иностранными и (или) международными
@@ -47,9 +34,9 @@ $this->registerJsFile('@modulestakedatamscript/inter.js');
                         <?php if (!empty($inter["extraFields"])) {
                             foreach ($inter["extraFields"] as $dop) { ?>
                                 <div class="row rightbuttonposition margin_for_dop">
-                                    <div class="col-sm-9"><input type="text" class="form-control"
-                                            id="ContractDetails" name="inter[<?php echo $count_row ?>][1][]"
-                                            placeholder="Реквизиты договора" value="<?php echo $dop["data"] ?>"></div>
+                                    <div class="col-sm-9"><input type="text" class="form-control" id="ContractDetails"
+                                            name="inter[<?php echo $count_row ?>][1][]" placeholder="Реквизиты договора"
+                                            value="<?php echo $dop["data"] ?>"></div>
                                     <div class="col-sm-3"><button type="button" id="delrow" name="false"
                                             class="btn btn-danger delbutton margin_for_dop" value="<?php echo $dop["id"] ?>"
                                             tabindex="-1">X</button></div>

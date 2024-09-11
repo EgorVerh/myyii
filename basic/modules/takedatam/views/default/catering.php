@@ -11,8 +11,10 @@ $this->registerJsFile('@modulestakedatamscript/objects.js');
 <head>
     <title>Организация питания в образовательной деятельности</title>
 </head>
+
 <body>
-    <h1 style="margin-bottom:20px;">Организация питания в образовательной деятельности</h1>
+    <?= $this->params["MenuSectionsWidget"] ?>
+    <h1>Организация питания в образовательной деятельности</h1>
     <form method="post" enctype="multipart/form-data">
         <?php
         $count_rows_tabels = 0;

@@ -2,7 +2,6 @@
 use yii\helpers\Html;
 /** @var yii\web\View $this */
 use frontend\modules\takedatam\assets\AppAsset;
-
 AppAsset::register($this);
 $this->registerJsFile('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 $this->registerJsFile('@modulestakedatamscript/document.js');
@@ -11,70 +10,12 @@ $this->registerCssFile('@modulestakedatamcss/styles.css')
 
 <head>
     <title>Образовательные стандарты и требования</title>
-    <style>
-        .dropdown {
-            margin-top: 10px;
-            border: 1px solid grey;
-            border-radius: 10px;
-            padding: 10px;
-        }
-
-        .dropdown-button {
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            width: 100%;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropdown-button {
-            background-color: #D3D3D3;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="dropdown">
-        <button class="dropdown-button">Меню</button>
-        <div class="dropdown-content">
-            <a href="/paid_edu">paid_edu</a>
-            <a href="/grants">grants</a>
-            <a href="/document">document</a>
-            <a href="/common">common</a>
-            <a href="/eduStandarts">eduStandarts</a>
-            <a href="/inter">inter</a>
-            <a href="/budget">budget</a>
-            <a href="/objects">objects</a>
-            <a href="/catering">catering</a>
-            <a href="/education">education</a>
-        </div>
-    </div>
+    <?= $this->params["MenuSectionsWidget"]?>
     <input type="hidden" id="whatisurl" value=4>
-    <h1 style="margin-bottom:20px;">Образовательные стандарты и требования</h1>
+    <h1>Образовательные стандарты и требования</h1>
     <!--Сгенерированные сведения-->
     <form method="post" enctype="multipart/form-data">
         <?php $count_row = 0; ?>

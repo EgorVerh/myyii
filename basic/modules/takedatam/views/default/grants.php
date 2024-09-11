@@ -2,7 +2,6 @@
 use yii\helpers\Html;
 /** @var yii\web\View $this */
 use frontend\modules\takedatam\assets\AppAsset;
-
 AppAsset::register($this);
 $this->registerJsFile('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
 $this->registerCssFile('@modulestakedatamcss/styles.css');
@@ -14,6 +13,7 @@ $this->registerJsFile('@modulestakedatamscript/document.js');
 </head>
 
 <body>
+    <?= $this->params["MenuSectionsWidget"] ?>
     <input type="hidden" id="whatisurl" value=5>
     <h1 style="margin-bottom:20px;">Стипендии и меры поддержки обучающихся</h1>
     <form method="post" enctype="multipart/form-data">
@@ -26,11 +26,11 @@ $this->registerJsFile('@modulestakedatamscript/document.js');
                 <input type="hidden" name="grants[<?php echo $number ?>][]" value="<?php echo $data["id"] ?>">
                 <input type="hidden" name="grants[<?php echo $number ?>][]" value="<?php echo $data["fieldsforms_id"] ?>">
                 <input type="hidden" name="grants[<?php echo $number ?>][]" value="<?php echo $data["titel"] ?>">
-                <?php if($number>1){?>
+                <?php if ($number > 1) { ?>
                     <input type="number" name="grants[<?php echo $number ?>][]" value=<?php echo $data["data"] ?>>
-                <?php }else{?>
+                <?php } else { ?>
                     <input type="text" name="grants[<?php echo $number ?>][]" value="<?php echo $data["data"] ?>">
-                <?php }?>
+                <?php } ?>
             <?php }
         } else { ?>
             <h4>Информация о предоставлении стипендии обучающимся</h4>
@@ -200,7 +200,7 @@ $this->registerJsFile('@modulestakedatamscript/document.js');
                             <?php $count_row++;
                     }
                 }
-        }?>
+        } ?>
                 <div class="rightbuttonposition"><button type="button" id="add_row" class="btn btn-success" value=10>+
                         Добавить</button></div>
                 <div class="form-group">
